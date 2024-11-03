@@ -1,13 +1,13 @@
 import React from 'react'
 import { Layout } from '../../components/element'
-import loading from '../../assets/loading_dangeun.png'
+import loading from '../../assets/image_01.png'
 import { styled } from 'styled-components'
 
 const Loading = () => {
   return (
     <Layout>
         <Wrapper>
-            <Img src={loading} alt="로딩중"/>
+            <Img src={loading} alt="로딩중" style={{ width: '200px', height: 'auto' }}/>
             <h1>로딩중입니다</h1>
         </Wrapper>
     </Layout>

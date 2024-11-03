@@ -1,11 +1,11 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import nullImg from '../../assets/null_dangeun.png';
+import nullImg from '../../assets/image_02.png';
 
 const NullAlert = ({alertMessage}) => {
   return (
     <Wrapper>
-        <img src={nullImg} alt="null이미지" />
+        <img src={nullImg} alt="null이미지" style={{ width: '200px', height: 'auto' }} />
         <p>{alertMessage}</p>
     </Wrapper>
   )
