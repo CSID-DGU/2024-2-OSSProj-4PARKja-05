@@ -12,6 +12,7 @@ function BoardWrite() {
   const [original_price, setPrice] = useState('');
   const [discount_rate, setRate] = useState('');
   const [category, setCategory] = useState(''); // 카테고리 상태 추가
+  const [saleEndDate, setSaleEndDate] = useState(''); // 판매 마감 날짜 상태 추가
   const [content, setContent] = useState('');
   const [preview, setPreview] = useState('');
   const [file, setFile] = useState('');
@@ -27,6 +28,7 @@ function BoardWrite() {
       setContent(location.state.content);
       setPreview(location.state.image);
       setCategory(location.state.category); // 수정시 카테고리 설정
+      setSaleEndDate(location.state.saleEndDate); // 수정 시 판매 마감 날짜 설정
     }
   }, [])
 
@@ -80,7 +82,14 @@ function BoardWrite() {
   }
 
   // * 카테고리 입력값 감지
+  const onCategory = (e) => {
+    setCategory(e.target.value);
+  }
 
+  // * 판매 마감 날짜 입력값 감지
+  const onSaleEndDateChange = (e) => {
+    setSaleEndDate(e.target.value);
+  }
 
   // * 내용 입력값 감지
   const onContentChange = (e) => {
@@ -90,7 +99,7 @@ function BoardWrite() {
   // * 게시글 작성 버튼 클릭
   const onSubmitClick = (e) => {
     e.preventDefault();
-    if (title === '' || original_price === '' || discount_rate === '' || category === '' || content === '' || file === '') {
+    if (title === '' || original_price === '' || discount_rate === '' || category === '' || saleEndDate === '' || content === '' || file === '') {
       alert('모든 내용을 입력해주세요.');
       return;
     }
@@ -101,7 +110,8 @@ function BoardWrite() {
     boardFormData.append('content', content.replaceAll(/\n/g, '<br>'));
     boardFormData.append('original_price', original_price.replaceAll(',', ''));
     boardFormData.append('discount_rate', discount_rate.replaceAll(',', ''));
-    boardFormData.append('image', category);
+    boardFormData.append('category', category);
+    boardFormData.append('sale_end_date', saleEndDate);
 
     submitBoardMutaion.mutate(boardFormData);
   }
@@ -117,7 +127,7 @@ function BoardWrite() {
   // * 게시글 수정 버튼 클릭
   const onEditClick = (e) => {
     e.preventDefault();
-    if (title === '' || original_price === '' || discount_rate === '' || category === '' || content === '') {
+    if (title === '' || original_price === '' || discount_rate === '' || category === '' || saleEndDate === '' || content === '') {
       alert('모든 내용을 입력해주세요.');
       return;
     }
@@ -128,7 +138,8 @@ function BoardWrite() {
       content: content.replaceAll(/\n/g, '<br>'),
       original_price: original_price.replaceAll(',', ''),
       discount_rate: discount_rate.replaceAll(',', ''),
-      category  // 카테고리 추가
+      category,  // 카테고리 추가
+      sale_end_date: saleEndDate
     }
 
     editBoardMutation.mutate(boardEditData);
@@ -206,7 +217,7 @@ function BoardWrite() {
           </div>
           </SetInfo>
           <SetInfo>
-            <BoardLabel htmlFor="category">종류</BoardLabel>
+            <BoardLabel htmlFor="category">카테고리</BoardLabel>
             <CategorySelect
               id="category"
               name="category"
@@ -220,6 +231,16 @@ function BoardWrite() {
               <option value="grocery">마트</option>
               <option value="etc">기타</option>
             </CategorySelect>
+          </SetInfo>
+          <SetInfo>
+            <BoardLabel htmlFor="title">판매 종료일</BoardLabel>
+            <BoardInput
+              type="date"
+              id="saleEndDate"
+              name="saleEndDate"
+              value={saleEndDate}
+              onChange={onSaleEndDateChange}
+            />
           </SetInfo>
           <BoardLabel htmlFor="content" />
           <SetInfo>
@@ -286,16 +307,19 @@ const SetInfo = styled.div`
   padding: 15px 10px;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 15px;
   border-bottom: 1px solid lightgrey;
 `
 
 const BoardLabel = styled.label`
   color: grey;
+  min-width: 100px;
+  text-align: left;
 `
 
 const BoardInput = styled.input`
-  width: 355px;
+  flex: 1;
   height: 30px;
   padding: 5px 5px;
   border: none;
@@ -318,7 +342,7 @@ const SetContent = styled.textarea`
 `
 
 const CategorySelect = styled.select`
-  width: 365px;
+  width: 300px;
   height: 30px;
   font-size: 16px;
   border: 1px solid lightgrey;
