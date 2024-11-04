@@ -5,6 +5,11 @@ import { SlArrowDown } from 'react-icons/sl';
 import { useMutation } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import { getBoards } from '../api/boards';
+import bread from '../assets/bread.png'
+import ricecake from '../assets/ricecake.png'
+import sidedish from '../assets/sidedish2.png'
+import martcart from '../assets/mart-cart.png'
+import etc from '../assets/sidedish.png'
 
 function BoardList() {
   const [boardData, setBoardData] = useState([]);
@@ -19,11 +24,11 @@ function BoardList() {
 
   // 카테고리 목록 정의
   const categories = [
-    { id: 1, name: '빵', image: '../assets/bread.png' },
-    { id: 2, name: '떡', image: '../assets/bread.png' },
-    { id: 3, name: '반찬', image: '../assets/bread.png' },
-    { id: 4, name: '마트', image: '../assets/bread.png' },
-    { id: 5, name: '기타', image: '../assets/bread.png' },
+    { id: 1, name: '빵', image: bread },
+    { id: 2, name: '떡', image: ricecake },
+    { id: 3, name: '반찬', image: sidedish },
+    { id: 4, name: '마트', image: martcart },
+    { id: 5, name: '기타', image: etc },
   ];
 
   // 게시글 리스트 조회
@@ -210,8 +215,8 @@ const CategoryImage = styled.div`
   overflow: hidden;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: auto;
     object-fit: cover;
   }
 `;
