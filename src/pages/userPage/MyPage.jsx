@@ -109,18 +109,18 @@ function MyPageCustomer() {
  
         <TabContainer>
             <TabMenuArea>
-                <TabMenu id="sale" className='tabMenu checked' onClick={tabMenuHandler}>구매내역</TabMenu>
-                <TabMenu id="soldout" className='tabMenu' onClick={tabMenuHandler}>관심목록</TabMenu>
+                <TabMenu id="sale" className='tabMenu checked' onClick={tabMenuHandler}>판매중</TabMenu>
+                <TabMenu id="soldout" className='tabMenu' onClick={tabMenuHandler}>예약내역</TabMenu>
                 <TabNav className='tabNav'/>
             </TabMenuArea>
             <TabContentsArea>
                 <TabSlideArea className='tabContents'>
                     <Contents>
-                        {/* 구매내역 영역 */}
+                        {/* 판매중 영역 */}
                         {dataMyBoard === undefined || dataMyBoard === null ? (
-                        <NullAlert alertMessage='구매한 상품이 없어요'/>
+                        <NullAlert alertMessage='판매중인 상품이 없어요'/>
                         ) : (dataMyBoard.filter((item) => item.status === true).length === 0 ?
-                        <NullAlert alertMessage='구매한 상품이 없어요'/> :
+                        <NullAlert alertMessage='판매중인 상품이 없어요'/> :
                         dataMyBoard.filter((item) => item.status === true).map((item) => (
                             <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
                             <ItemArea>
@@ -138,9 +138,9 @@ function MyPageCustomer() {
                         )}
                     </Contents>
                     <Contents>
-                        {/* 관심목록 영역 */}
+                        {/* 예약내역 영역 */}
                         {dataMyLikeBoard === undefined || dataMyLikeBoard.length === 0 ? (
-                            <NullAlert alertMessage='찜한 상품이 없어요'/>
+                            <NullAlert alertMessage='손님이 예약한 상품이 없어요'/>
                         ) : (
                             dataMyLikeBoard.map((item) => (
                                 <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
