@@ -3,11 +3,13 @@ import { styled } from 'styled-components';
 import {CommonButton, IntroLayout} from '../../components/element';
 import sprout from '../../assets/sprout.webp'
 import { useNavigate } from 'react-router-dom';
+import { SlArrowLeft } from "react-icons/sl";
 
 function SignUpChoice() {
   const navigate = useNavigate();
   return (
     <IntroLayout>
+      <Backbutton type='button' onClick={() => navigate(-1)}><SlArrowLeft /></Backbutton>
         <TextWrap>
           <img src={sprout} alt='소소하게 메인 이미지'/>
           <h1>가입 유형을</h1>
@@ -23,9 +25,17 @@ function SignUpChoice() {
 
 export default SignUpChoice;
 
-
+const Backbutton = styled.button`
+    position:relative;
+    top:20px;
+    left:0;
+    border:none;
+    background-color:transparent;
+    font-size:22px;
+    color:#777;
+`
 const TextWrap = styled.div`
-  height:calc(100vh - 180px);
+  height:calc(100vh - 210px);
   display:flex;
   flex-direction:column;
   justify-content:center;

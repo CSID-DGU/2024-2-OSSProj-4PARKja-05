@@ -8,6 +8,7 @@ import { CommonButton, Layout } from '../../components/element';
 import Loading from '../statusPage/Loading';
 import Error from '../statusPage/Error';
 import NullAlert from '../statusPage/NullAlert';
+import { SlSettings } from "react-icons/sl";
 
 function MyPageCustomer() {
     const navigate = useNavigate();
@@ -19,11 +20,9 @@ function MyPageCustomer() {
         const allMenus = document.querySelectorAll('.tabMenu');
         const tabNav = document.querySelector('.tabNav');
         const tabContents = document.querySelector('.tabContents');
-        const NavWidth = 147;
-        const SlideWidth = 33;
         const index = Array.from(allMenus).indexOf(targetMenu);
-        const navDistance = index * NavWidth;
-        const contentsDistance = index * SlideWidth;
+        const navDistance = index * 100;
+        const contentsDistance = index * 50;
         
         allMenus.forEach((menu) => {
             menu.classList.remove('checked');
@@ -31,7 +30,7 @@ function MyPageCustomer() {
 
         targetMenu.classList.add('checked');
 
-        tabNav.style.transform = `translateX(${navDistance}px)`;
+        tabNav.style.transform = `translateX(${navDistance}%)`;
         tabContents.style.transform = `translateX(-${contentsDistance}%)`;
     };
 
@@ -102,6 +101,7 @@ function MyPageCustomer() {
     console.log('dataMyLikeBoard',dataMyLikeBoard);
   return (
     <Layout>
+        <Setbutton type='button' onClick={() => navigate('/Settings')}><SlSettings /></Setbutton>
         <h1>{sessionStorage.getItem('usernickname')}님의 정보</h1>
         <CommonButton size="small" onClick={() => navigate('/BoardWrite')} style={{marginRight:'13px'}}>글쓰기</CommonButton>
         {/* <CommonButton size="small" onClick={() => navigate('/editNickname')} style={{marginRight:'13px'}}>닉네임 변경</CommonButton> */}
@@ -109,47 +109,18 @@ function MyPageCustomer() {
  
         <TabContainer>
             <TabMenuArea>
-                <TabMenu id="sale" className='tabMenu checked' onClick={tabMenuHandler}>판매중</TabMenu>
-                <TabMenu id="soldout" className='tabMenu' onClick={tabMenuHandler}>거래완료</TabMenu>
-                <TabMenu id="like" className='tabMenu' onClick={tabMenuHandler}>찜</TabMenu>
+                <TabMenu id="sale" className='tabMenu checked' onClick={tabMenuHandler}>구매내역</TabMenu>
+                <TabMenu id="soldout" className='tabMenu' onClick={tabMenuHandler}>관심목록</TabMenu>
                 <TabNav className='tabNav'/>
             </TabMenuArea>
             <TabContentsArea>
                 <TabSlideArea className='tabContents'>
                     <Contents>
-                        {/* 판매중 영역 */}
+                        {/* 구매내역 영역 */}
                         {dataMyBoard === undefined || dataMyBoard === null ? (
-                        <NullAlert alertMessage='판매중인 상품이 없어요'/>
-                        ) : (dataMyBoard.filter((item) => item.status === false).length === 0 ?
-                        <NullAlert alertMessage='판매중인 상품이 없어요'/> :
-                        dataMyBoard.filter((item) => item.status === false).map((item) => (
-                            <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
-                                <Link to={`/BoardDetail/${item.id}`} key={item.id}>
-                                    <ItemArea>
-                                        <ImgBox>
-                                        <img src={item.image} alt={item.title} />
-                                        </ImgBox>
-                                        <Info>
-                                        <h2>{item.title}</h2>
-                                        <p>{item.address}</p>
-                                        <b>{item.price}</b>
-                                        </Info>
-                                    </ItemArea>
-                                </Link>
-                                <ButtonWrap>
-                                    <button onClick={(event) => BoardDelete(event, item.id)}>상품삭제</button>
-                                    <button onClick={(event) => BoardSoldout(event, item.id)}>거래완료</button>
-                                </ButtonWrap>
-                            </ItemBox>
-                        ))
-                        )}
-                    </Contents>
-                    <Contents>
-                        {/* 거래 완료 영역 */}
-                        {dataMyBoard === undefined || dataMyBoard === null ? (
-                        <NullAlert alertMessage='거래 완료한 상품이 없어요'/>
+                        <NullAlert alertMessage='구매한 상품이 없어요'/>
                         ) : (dataMyBoard.filter((item) => item.status === true).length === 0 ?
-                        <NullAlert alertMessage='거래 완료한 상품이 없어요'/> :
+                        <NullAlert alertMessage='구매한 상품이 없어요'/> :
                         dataMyBoard.filter((item) => item.status === true).map((item) => (
                             <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
                             <ItemArea>
@@ -167,7 +138,7 @@ function MyPageCustomer() {
                         )}
                     </Contents>
                     <Contents>
-                        {/* 찜 영역 */}
+                        {/* 관심목록 영역 */}
                         {dataMyLikeBoard === undefined || dataMyLikeBoard.length === 0 ? (
                             <NullAlert alertMessage='찜한 상품이 없어요'/>
                         ) : (
@@ -195,6 +166,16 @@ function MyPageCustomer() {
 }
 
 export default MyPageCustomer;
+
+const Setbutton = styled.button`
+    position:relative;
+    top:20px;
+    left:0;
+    border:none;
+    background-color:transparent;
+    font-size:22px;
+    color:#777;
+`
 
 const TabContainer = styled.article`
     width:100%;

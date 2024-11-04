@@ -2,6 +2,8 @@ import Login from './userPage/Login'
 import SignUp from './userPage/SignUp'
 import Intro from './userPage/Intro'
 import MyPage from './userPage/MyPage';
+import MyPageCustomer from './userPage/MyPageCustomer';
+import Settings from './userPage/Settings'
 import SignUpChoice from './userPage/SignUpChoice'
 import SignUpCustomer from './userPage/SignUpCustomer';
 import Main from './Main';
@@ -14,5 +16,6 @@ import Loading from './statusPage/Loading';
 import Error from './statusPage/Error';
 import NullAlert from './statusPage/NullAlert';
 
-export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardDetail, BoardWrite, LocationSetting, Loading, Error, NullAlert, SignUpChoice, SignUpCustomer };
+export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardDetail, BoardWrite, LocationSetting, 
+        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer };
 
