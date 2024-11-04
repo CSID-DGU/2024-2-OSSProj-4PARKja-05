@@ -57,7 +57,7 @@ function BoardList() {
 
   // 선택된 카테고리에 따라 필터링된 게시글 목록
   const filteredBoardData = selectedCategory
-  ? boardData.filter((board) => board.categoryId === selectedCategory)
+  ? boardData && boardData.filter((board) => board.categoryId === selectedCategory)
   : boardData;
 
   const handleSearch = (event) => {
@@ -81,7 +81,7 @@ function BoardList() {
 
       {/* 카테고리 섹션 */}
       <CategorySection>
-        {categories.map((category) => (
+        {categories && categories.map((category) => (
           <CategoryItem
             key={category.id}
             onClick={() => handleCategorySelect(category.id)}
@@ -97,7 +97,7 @@ function BoardList() {
 
       {/* 게시물 리스트 섹션 */}
       <ListSection>
-        {filteredBoardData.map((board) => (
+        {filteredBoardData && filteredBoardData.map((board) => (
           <ListOneDiv onClick={() => setPageChange(board.id)} key={board.id}>
             <Image
               width="130px"

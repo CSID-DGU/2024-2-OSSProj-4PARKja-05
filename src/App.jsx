@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Main, Login, SignUp, MyPage, Intro, BoardList, Search, BoardDetail, BoardWrite, 
+import { Main, Login, SignUp, MyPage, Intro, BoardList, BoardListShop, Search, BoardDetail, BoardWrite, 
         LocationSetting, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer } from './pages/index';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
 
@@ -24,6 +24,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Search" element={<Search />} />
           <Route path="/BoardList" element={<BoardList />} />
+          <Route path="/BoardListShop" element={<BoardListShop />} />
           <Route path="/LocationSetting" element={<LocationSetting />} />
           <Route path="/BoardDetail/:id" element={<BoardDetail />} />
           <Route path="/BoardWrite" element={<BoardWrite />} />

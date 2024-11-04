@@ -9,6 +9,7 @@ import SignUpCustomer from './userPage/SignUpCustomer';
 import Main from './Main';
 import Search from './Search'
 import BoardList from './BoardList';
+import BoardListShop from './BoardListShop'
 import BoardDetail from './BoardDetail'
 import BoardWrite from './BoardWrite'
 import LocationSetting from './LocationSetting'
@@ -16,6 +17,6 @@ import Loading from './statusPage/Loading';
 import Error from './statusPage/Error';
 import NullAlert from './statusPage/NullAlert';
 
-export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardDetail, BoardWrite, LocationSetting, 
+export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardListShop, BoardDetail, BoardWrite, LocationSetting, 
         Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer };
 
