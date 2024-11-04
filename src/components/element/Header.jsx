@@ -27,8 +27,8 @@ const StHeader = styled.header`
     box-shadow: rgba(0, 0, 0, 0.1) 0 5px 6px -1px;
     display: flex; /* Flexbox 사용 */
     align-items: center; /* 수직 중앙 정렬 */
-    justify-content: space-between; /* 좌우 간격 조정 */
-    
+    justify-content: center; /* 로고를 가운데 정렬 */
+
     & button {
         position: absolute;
         top: 50%;
@@ -42,12 +42,12 @@ const StHeader = styled.header`
 
     & > a {
         display: block;
-        width: 150px;
-        margin: 0 auto; /* 가운데 정렬 */
+        width: 100px; /* 로고 크기를 조정 */
+        margin: 0; /* 가운데 정렬은 부모 flex로 처리 */
     }
 
     & > a > img {
-        width: 120px;
+        width: 110px; /* 로고 이미지 크기 조정 */
         margin: 0 auto;
     }
 `
