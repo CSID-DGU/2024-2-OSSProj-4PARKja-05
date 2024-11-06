@@ -26,7 +26,7 @@ function BoardDetail() {
   // * 게시글 수정 버튼 클릭
   const navigate = useNavigate();
   const onBoardEdit = () => {
-    navigate(`/BoardWrite`, {
+    navigate('/BoardWrite', {
       state: {
         boardId: currentBoardId,
         title: data.title,
@@ -52,7 +52,7 @@ function BoardDetail() {
   const deleteBoardMutation = useMutation(setDeleteBoard, {
     onSuccess: () => {
       alert('게시글이 삭제되었습니다.');
-      navigate(`/BoardList`);
+      navigate('/BoardList');
     }
   })
 
@@ -78,6 +78,12 @@ function BoardDetail() {
       }
     }
   })
+
+  // * 예약하기 버튼 클릭 핸들러
+  const onReserve = () => {
+    //navigate(`/ReserveNotice/${currentBoardId}`);
+    navigate(`/ReserveNotice`);
+  };
 
   return (
     <Layout>
@@ -119,7 +125,6 @@ function BoardDetail() {
             {data.content.replace(/<br>/g, '\n')}
           </DetailContent>
         </DetailDiv>
-        { sessionStorage.getItem('usernickname') === data.nickName }
         <DetailNav>
           {data.status && <StatusButton color={'black'}>거래완료</StatusButton>}
           <DetailH1>{Number(data.price).toLocaleString()}원</DetailH1>
@@ -129,6 +134,7 @@ function BoardDetail() {
               : currentLike ? <AiFillHeart onClick={onBoardClickLike} /> : <AiOutlineHeart onClick={onBoardClickLike} />
             }
           </div>
+          <ReserveButton onClick={onReserve}>예약하기</ReserveButton>
         </DetailNav>
       </ContentSection>
     }
@@ -140,21 +146,22 @@ export default BoardDetail
 
 const ContentSection = styled.section`
   margin-top: 20px;
-`
+`;
 
 const UserDiv = styled.div`
   padding: 15px 5px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid lightgrey;
-`
+`;
+
 const UserInfoDiv = styled.div`
   display: flex;
   align-items: center;
   & img {
     margin-right: 10px;
   }
-`
+`;
 
 const UserEditDiv = styled.div`
   display: flex;
@@ -165,35 +172,35 @@ const UserEditDiv = styled.div`
   & span {
     cursor: pointer;
   }
-`
+`;
 
 const DetailDiv = styled.div`
   margin-top: 15px;
   margin-left: 5px;
-`
+`;
 
 const DetailH1 = styled.h1`
   font-size: 22px;
   font-weight: 600;
   margin: 0;
-`
+`;
 
 const DetailH2 = styled.h2`
   font-size: 20px;
   font-weight: 600;
   margin: 0;
-`
+`;
 
 const DetailH3 = styled.h3`
   margin: 0;
   font-size: 15px;
   font-weight: 300;
   color: grey;
-`
+`;
 
 const DetailContent = styled.p`
   margin: 25px 0 90px 0;
-`
+`;
 
 const DetailNav = styled.nav`
   height: 70px;
@@ -218,4 +225,16 @@ const DetailNav = styled.nav`
   & div:last-child {
     margin-left: auto;
   }
-`
+`;
+
+const ReserveButton = styled.button`
+  margin-left: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;

@@ -13,10 +13,12 @@ import BoardListShop from './BoardListShop'
 import BoardDetail from './BoardDetail'
 import BoardWrite from './BoardWrite'
 import LocationSetting from './LocationSetting'
+import ReserveNotice from './ReserveNotice';
 import Loading from './statusPage/Loading';
 import Error from './statusPage/Error';
 import NullAlert from './statusPage/NullAlert';
 
+
 export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardListShop, BoardDetail, BoardWrite, LocationSetting, 
-        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer };
+        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice };
 
