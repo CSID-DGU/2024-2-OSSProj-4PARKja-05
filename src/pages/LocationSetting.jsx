@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation } from 'react-query';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { postMapRange } from '../api/map';
 import { Layout } from '../components/element';
@@ -10,6 +11,8 @@ function LocationSetting() {
     // map값 저장해두기   
     const [mapState, setMapState] = useState(null);
     const [mapRange, setMapRange] = useState(0);
+    const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
+    const navigate = useNavigate();
 
     const mutate = useMutation();
 
@@ -19,6 +22,12 @@ function LocationSetting() {
         }
     });
     
+    const handleSearch = (event) => {
+        if (event.key === "Enter") {
+          navigate(`/BoardListShop/${searchTerm}`);
+        }
+      };
+
     useEffect(()=> {
         const Container = document.getElementById('map');
         // const container = containerRef.current; // Container 변수 참조
@@ -45,6 +54,11 @@ function LocationSetting() {
         });
         marker.setMap(map);
 
+         // 마커 클릭 이벤트 리스너 추가
+         kakao.maps.event.addListener(marker, 'click', () => {
+            navigate(`/BoardListShop/${searchTerm}`); // 원하는 경로로 이동
+        });       
+
         // 지도 위에 주변 동네 원형 영역 표시하기
         var circle = new kakao.maps.Circle({
             center : new kakao.maps.LatLng(Y, X),  // 원의 중심좌표 입니다 
@@ -54,7 +68,7 @@ function LocationSetting() {
             strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
             // strokeStyle: 'dashed', // 선의 스타일 입니다
             fillColor: '#CFE7FF', // 채우기 색깔입니다
-            fillOpacity: 0.5  // 채우기 불투명도 입니다   
+            fillOpacity: 0.5  // 채우기 불투명도 입니다
         }); 
         // 초기 원형 영역 값
         circle.setMap(map);
@@ -91,12 +105,22 @@ function LocationSetting() {
     // }
   return (
     <Layout>
-        <h1 style={{fontSize:"25px"}}>내 동네 설정</h1>
+        {/* 검색 바 */}
+        <SearchBar>
+            <input 
+            type="text"
+            placeholder="상점명 입력"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleSearch} // Enter 키 눌렀을 때 검색
+            />
+        </SearchBar>
+        <h1 style={{fontSize:"25px"}}>동네 지도</h1>
         <MapArea>
             <div id='map' style={{width:"100%",height:"500px"}}></div>
         </MapArea>
         <MapController>
-            <h2 >내 동네</h2>
+            <h2 >범위 설정</h2>
             <p className='mytown'>{sessionStorage.getItem("userAddress3depth")}</p>
             <Controller>
                 <p>가까운 동네</p>
@@ -145,13 +169,41 @@ function LocationSetting() {
 
 export default LocationSetting;
 
-const MapArea = styled.section`
+const SearchBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 8px;
+  width: 90%;
+  max-width: 500px; /* 검색 바와 카테고리 섹션의 너비를 같게 설정 */
 
+  input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    &:focus {
+      border-color: #5ca771;
+      box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.2);
+    }
+    &::placeholder {
+      color: #aaa;
+      font-size: 14px;
+    }
+  }
+`;
+
+const MapArea = styled.section`
 `
 const MapController = styled.section`
     & .mytown{
         display:inline-block;
-        background-color:#FF7E36;
+        background-color:#14AD6D;
         margin:0;
         padding:7px 20px;
         color:#fff;
@@ -190,7 +242,7 @@ const Controller = styled.section`
     & button.checked{
         width:30px;
         height:30px;
-        background-color:#FF7E36;
+        background-color:#14AD6D;
     }
     & #m500{
         left:0;
@@ -206,4 +258,3 @@ const Controller = styled.section`
     }
     
 `
-
