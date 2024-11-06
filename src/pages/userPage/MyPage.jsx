@@ -10,7 +10,7 @@ import Error from '../statusPage/Error';
 import NullAlert from '../statusPage/NullAlert';
 import { SlSettings } from "react-icons/sl";
 
-function MyPageCustomer() {
+function MyPage() {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
 
@@ -165,7 +165,7 @@ function MyPageCustomer() {
   )
 }
 
-export default MyPageCustomer;
+export default MyPage;
 
 const Setbutton = styled.button`
     position:relative;

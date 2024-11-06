@@ -14,6 +14,8 @@ function MyPageCustomer() {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
 
+    const mileage = sessionStorage.getItem('mileage') || 0; // 마일리지 정보를 가져옵니다.
+
     // 탭메뉴 관련 js
     const tabMenuHandler = (e) => {
         const targetMenu = e.target;
@@ -103,9 +105,12 @@ function MyPageCustomer() {
     <Layout>
         <Setbutton type='button' onClick={() => navigate('/Settings')}><SlSettings /></Setbutton>
         <h1>{sessionStorage.getItem('usernickname')}님의 정보</h1>
-        <CommonButton size="small" onClick={() => navigate('/BoardWrite')} style={{marginRight:'13px'}}>글쓰기</CommonButton>
+        {/*<CommonButton size="small" onClick={() => navigate('/BoardWrite')} style={{marginRight:'13px'}}>글쓰기</CommonButton>*/}
         {/* <CommonButton size="small" onClick={() => navigate('/editNickname')} style={{marginRight:'13px'}}>닉네임 변경</CommonButton> */}
-        <CommonButton size="small" onClick={Logout}>로그아웃</CommonButton>
+        <ButtonContainer>
+                <CommonButton size="small" onClick={Logout}>로그아웃</CommonButton>
+                <MileageDisplay>마일리지: {mileage}</MileageDisplay>
+        </ButtonContainer>
  
         <TabContainer>
             <TabMenuArea>
@@ -176,6 +181,19 @@ const Setbutton = styled.button`
     font-size:22px;
     color:#777;
 `
+const ButtonContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 버튼과 마일리지를 양 끝에 배치 */
+    margin-bottom: 15px;
+    margin-right: 15px;
+`;
+
+const MileageDisplay = styled.div`
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+`;
 
 const TabContainer = styled.article`
     width:100%;
@@ -189,7 +207,7 @@ const TabMenuArea = styled.div`
     border-bottom:1px solid #bdbdbd;
 `
 const TabMenu = styled.button`
-    width:33%;
+    width:50%;
     background-color:transparent;
     border:none;
     font-size:18px;
@@ -202,7 +220,7 @@ const TabMenu = styled.button`
 const TabNav = styled.div`
     position:absolute;
     bottom:0;
-    width:145px;
+    width:50%; /* 네비게이션 바도 탭에 맞게 50% */
     height:2px;
     background-color:#333;
     transition:.3s;
@@ -212,12 +230,12 @@ const TabContentsArea = styled.div`
     overflow:hidden;
 `
 const TabSlideArea = styled.div`
-    width:300%;
+    width: 200%; /* 두 탭의 내용만 담으므로 200%로 설정 */
     display:flex;
     transition:.3s;
 `
 const Contents = styled.div`
-    width:100%;
+     width:100%; /* 탭 컨텐츠 영역도 50%로 설정 */
     /* background-color:beige; */
     &>div{
         width:100%;
