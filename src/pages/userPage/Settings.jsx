@@ -14,13 +14,13 @@ function Settings() {
       <MenuList>
         <MenuItem onClick={() => navigate('/member-management')}>회원 관리</MenuItem>
         <MenuItem onClick={() => navigate('/notification-settings')}>알림 설정</MenuItem>
-        <MenuItem onClick={() => navigate('/announcements')}>공지사항</MenuItem>
+        <MenuItem onClick={() => navigate('/ReserveNotice')}>공지사항</MenuItem>
         <MenuItem onClick={() => navigate('/change-country')}>국가 변경</MenuItem>
         <MenuItem onClick={() => navigate('/language-settings')}>언어 설정</MenuItem>
         <MenuItem onClick={() => navigate('/open-source-licenses')}>오픈소스 라이선스</MenuItem>
         <MenuItem onClick={() => navigate('/terms-of-service')}>서비스 이용약관</MenuItem>
         <MenuItem onClick={() => navigate('/privacy-policy')}>개인정보처리방침</MenuItem>
-        <MenuItem onClick={() => navigate('/customer-service')}>고객센터</MenuItem>
+        <MenuItem onClick={() => navigate('/InquiryPage')}>고객센터</MenuItem>
       </MenuList>
     </IntroLayout>
   );

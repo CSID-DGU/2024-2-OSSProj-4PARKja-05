@@ -2,7 +2,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Main, Login, SignUp, MyPage, Intro, BoardList, BoardListShop, Search, BoardDetail, BoardWrite, 
-        LocationSetting, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice } from './pages/index';
+        LocationSetting, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice, InquiryPage } from './pages/index';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
 
 
@@ -21,6 +21,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignUpChoice" element={<SignUpChoice />} />
           <Route path="/SignUpCustomer" element={<SignUpCustomer />} />
+          <Route path="/InquiryPage" element={<InquiryPage />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Search" element={<Search />} />
           <Route path="/BoardList" element={<BoardList />} />
@@ -28,7 +29,7 @@ function App() {
           <Route path="/LocationSetting" element={<LocationSetting />} />
           <Route path="/BoardDetail/:id" element={<BoardDetail />} />
           <Route path="/BoardWrite" element={<BoardWrite />} />
-          <Route path="/ReseveNotice" element={<ReserveNotice />} />
+          <Route path="/ReserveNotice" element={<ReserveNotice />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

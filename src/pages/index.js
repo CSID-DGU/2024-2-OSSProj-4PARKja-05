@@ -1,5 +1,6 @@
 import Login from './userPage/Login'
 import SignUp from './userPage/SignUp'
+import InquiryPage from './userPage/InquiryPage';
 import Intro from './userPage/Intro'
 import MyPage from './userPage/MyPage';
 import MyPageCustomer from './userPage/MyPageCustomer';
@@ -20,5 +21,5 @@ import NullAlert from './statusPage/NullAlert';
 
 
 export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardListShop, BoardDetail, BoardWrite, LocationSetting, 
-        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice };
+        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice, InquiryPage };
 
