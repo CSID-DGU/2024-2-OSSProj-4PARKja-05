@@ -27,9 +27,11 @@ function Login() {
             sessionStorage.setItem("userAddress1depth", response.data.address.region1depthName);
             sessionStorage.setItem("userAddress2depth", response.data.address.region2depthName);
             sessionStorage.setItem("userAddress3depth", response.data.address.region3depthName);
+            sessionStorage.setItem("userAddress4depth", response.data.address.region4depthName);
+            sessionStorage.setItem("userTime", response.data.time);
             sessionStorage.setItem("userAddressX", response.data.address.x);
             sessionStorage.setItem("userAddressY", response.data.address.y);
-            
+
             navigate("/BoardList");
         },
         onError: (error) => {
