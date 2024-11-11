@@ -2,17 +2,25 @@ import axios from 'axios';
 import { instance } from './axios';
 
 // 회원가입
-export const userSignup = (userInfo) => {
-    return instance.post('/api/member/signup', userInfo)
+export const userSignup = (userInfo, userType) => {
+  // 이 userSignup 함수가 pages/SignUp.jsx 파일에서 쓰임
+    return instance.post('/api/member/signup', {
+      ...userInfo,
+    userType,})
     .then((response) => {
+        console.log("회원가입 성공시: ", response);
         alert('회원가입 성공');
         return response;
     })
     .catch((error) => {
+        console.log("회원가입 에러시: ", error)
         alert(error.response.data.responseMessage)
         // throw error;
     })
 };
+
+
+
 // 아이디 중복 조회
 export const getIdChk = (userId) => {
     return instance.get(`/api/member/checkId?id=${userId}`)
