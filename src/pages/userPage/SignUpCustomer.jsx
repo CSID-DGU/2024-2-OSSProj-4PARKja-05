@@ -120,8 +120,8 @@ function SignUpCustomer() {
                     placeholder='8~15글자 사이 영문,숫자,특수문자' 
                     onChange={onChangeInputHandler}/>
                     {
-                        /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,.<>?[\]\\/]{8,15}$/.test(input.password) ?
-                        null
+                        /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,.<>?[\]\\/])[a-zA-Z0-9!@#$%^&*()\-_=+{};:,.<>?[\]\\/]{8,15}$/.test(input.password)
+                        ? null
                         :
                         <p className='alertText'>8~15글자 사이 영문,숫자,특수문자를 사용하세요.</p>
                     }
