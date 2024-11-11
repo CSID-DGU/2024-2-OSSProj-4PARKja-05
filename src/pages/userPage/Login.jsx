@@ -20,8 +20,8 @@ function Login() {
 
     const mutation = useMutation(userLogin, {  // 지도 locationsetting에서 가져온거 -> 지도범위 정해짐
         onSuccess: (response) => {
-            localStorage.setItem("refresh_token", response.headers['access_token']);
-            sessionStorage.setItem("access_token", response.headers['refresh_token']);
+            localStorage.setItem("refresh_token", response.headers['refresh_token']);
+            sessionStorage.setItem("access_token", response.headers['access_token']);
             sessionStorage.setItem("userId", response.data.userId);
             sessionStorage.setItem("usernickname", response.data.nickname);
             sessionStorage.setItem("userAddress1depth", response.data.address.region1depthName);
