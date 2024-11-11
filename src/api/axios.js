@@ -25,13 +25,12 @@ instance.interceptors.request.use(
 );
 
 const refresh = async (config) => {
-    // const expireAt = sessionStorage.getItem('expireAt');
-    // let token = sessionStorage.getItem("access_token");
-    // console.log('만료확인');
+    const expireAt = sessionStorage.getItem('expireAt');
+    let token = sessionStorage.getItem("access_token");
+    console.log('만료확인');
 
-    // if(mockComponent(expireAt).diff(moment()) < 0){
-    //     const res = tokenInstance.post('/api/member/logout');
-        
-    // }
+    if(mockComponent(expireAt).diff(moment()) < 0){
+      const res = tokenInstance.post('/api/member/logout');
+     }
 }
 

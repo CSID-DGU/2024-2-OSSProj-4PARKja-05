@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { SlArrowLeft } from "react-icons/sl";
-import {CommonButton, Flx, Input, IntroLayout } from '../../components/element';
+import { CommonButton, Flx, Input, IntroLayout } from '../../components/element';
 import { userLogin } from '../../api/users';
 import { useMutation } from 'react-query';
 
@@ -10,15 +10,17 @@ function Login() {
     const navigate = useNavigate();
 
     const [input, setInput] = useState({
-        userId:'',
-        password:''
+        userId: '',
+        password: ''
     });
 
+    // 입력 값 변경 핸들러
     const onChangeInputHandler = (e) => {
-        setInput({...input, [e.target.id]: e.target.value})
+        setInput({ ...input, [e.target.id]: e.target.value });
     };
 
-    const mutation = useMutation(userLogin, {  // 지도 locationsetting에서 가져온거 -> 지도범위 정해짐
+    // 로그인 mutation
+    const mutation = useMutation(userLogin, {
         onSuccess: (response) => {
             localStorage.setItem("refresh_token", response.headers['access_token']);
             sessionStorage.setItem("access_token", response.headers['refresh_token']);
@@ -28,49 +30,49 @@ function Login() {
             sessionStorage.setItem("userAddress2depth", response.data.address.region2depthName);
             sessionStorage.setItem("userAddress3depth", response.data.address.region3depthName);
             sessionStorage.setItem("userAddress4depth", response.data.address.region4depthName);
-            sessionStorage.setItem("userTime", response.data.time);
+            sessionStorage.setItem("userTime", response.data.address.userTime);
             sessionStorage.setItem("userAddressX", response.data.address.x);
             sessionStorage.setItem("userAddressY", response.data.address.y);
-
+            
             navigate("/BoardList");
         },
         onError: (error) => {
-            console.log(error);
+            console.error('로그인 실패', error);
         }
     });
 
-    // 로그인 버튼 클릭 이벤트핸들러
+    // 로그인 버튼 클릭 이벤트 핸들러
     const onSubmitLoginHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const userInfo = {
-            userId:input.userId,
-            password:input.password
+            userId: input.userId,
+            password: input.password
         };
-        mutation.mutate(userInfo);
-        setInput({userId:'',password:''});
+        mutation.mutate(userInfo); // 로그인 요청
+        setInput({ userId: '', password: '' }); // 입력 필드 초기화
     };
-    
-  return (
-    <IntroLayout>
-        <Backbutton type='button' onClick={() => navigate(-1)}><SlArrowLeft /></Backbutton>
-        <h1 style={{marginTop:"40px",marginBottom:"0px"}}>로그인</h1>
-        <StForm onSubmit={onSubmitLoginHandler}>
-            <div>
-                <Flx>
-                    <label htmlFor='userId'>아이디</label>
-                    <Input type="text" value={input.id} id='userId' onChange={onChangeInputHandler}/>
-                </Flx>
-                
-                <Flx>
-                    <label htmlFor='password'>패스워드</label>
-                    <Input type="password" value={input.pw} id='password' onChange={onChangeInputHandler}/>
-                </Flx>
-            </div>
-        
-            <CommonButton size='large'>로그인</CommonButton>
-        </StForm>
-    </IntroLayout>
-  )
+
+    return (
+        <IntroLayout>
+            <Backbutton type='button' onClick={() => navigate(-1)}><SlArrowLeft /></Backbutton>
+            <h1 style={{ marginTop: "40px", marginBottom: "0px" }}>로그인</h1>
+            <StForm onSubmit={onSubmitLoginHandler}>
+                <div>
+                    <Flx>
+                        <label htmlFor='userId'>아이디</label>
+                        <Input type="text" value={input.userId} id='userId' onChange={onChangeInputHandler} />
+                    </Flx>
+
+                    <Flx>
+                        <label htmlFor='password'>패스워드</label>
+                        <Input type="password" value={input.password} id='password' onChange={onChangeInputHandler} />
+                    </Flx>
+                </div>
+
+                <CommonButton type='submit' size='large'>로그인</CommonButton>
+            </StForm>
+        </IntroLayout>
+    )
 }
 
 export default Login;
@@ -103,6 +105,3 @@ const StForm = styled.form`
         margin-bottom:15px;
     }
 `
-
-
-

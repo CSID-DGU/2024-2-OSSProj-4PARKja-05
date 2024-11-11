@@ -4,8 +4,7 @@ import { styled } from 'styled-components';
 import { SlArrowLeft } from "react-icons/sl";
 import { Input, CommonButton, Flx, IntroLayout } from '../../components/element';
 import { useMutation } from 'react-query';
-import { getAddressChk, getIdChk, userSignup } from '../../api/users';
-
+import { getAddressChk, getIdChk, userSignup } from '../../api/users';  
 
 function SignUp() {
     // 회원가입에서 필요한 Hook연결하기
@@ -13,38 +12,39 @@ function SignUp() {
     const mutate = useMutation();
 
     //Input창 저장용 state
-    const [input, setInput] = useState({
+    const [input, setInput] = useState({  // 사장님계정에 맞게 입력란 수정
         userId:'',
         password:'',
         pwConfirm:'',
-        nickname:'',
+        nickname:'',   // 닉네임=상점명 으로 생각하자
         address:{
             region1depthName:'',
             region2depthName:'',
             region3depthName:'',
             region4depthName:'',
         },
-        time:''
+        time:'',   // 손님유저랑 유일하게 다르게 입력받는 항목
+        userType: 'owner',
     });
 
-    // Input창 작성용 onChangehandler
+    // Input창 작성용 onChangehandler, 입력 필드에 입력한 값을 위의 state에 저장하는 함수
     const onChangeInputHandler = (e) => {
-        const { id, value } = e.target;
-        if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName" || id === "region4depthName") {
-            setInput({
-              ...input,
-              address: {
-                ...input.address,
-                [id]: value,
-              },
-            });
-          } else {
-            setInput({
-              ...input,
+      const { id, value } = e.target;
+      if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName" || id === "region4depthName") {
+          setInput({
+            ...input,
+            address: {
+              ...input.address,
               [id]: value,
-            });
-          }
-    };
+            },
+          });
+        } else {
+          setInput({
+            ...input,
+            [id]: value,
+          });
+        }
+  };
     // 주소 유효성 확인 핸들러
     const onAddressChkHandler = (e,region1depthName,region2depthName,region3depthName) => {
         e.preventDefault();
@@ -57,7 +57,7 @@ function SignUp() {
         getIdChk(userId);
     }
 
-    // 가입하기 버튼 클릭 이벤트핸들러
+    // 가입하기 버튼 클릭 이벤트핸들러, 가입하기 버튼을 눌렀을 때 호출되는 함수
     const onSubmitJoinHandler = (e) => {
         e.preventDefault();
         const userInfo = {
@@ -72,8 +72,9 @@ function SignUp() {
             },
             time:input.time
         };
-        userSignup(userInfo);
-        navigate('/Login');
+        const userType = 'owner'; // 사장님 유저 타입으로 설정
+        userSignup(userInfo, userType); // 입력된 회원 정보를 가지고 백엔드로 요청 보내기
+        navigate('/Login');   // 요청이 성공하면 로그인 페이지로 이동
     };
 
   return (
@@ -182,7 +183,7 @@ function SignUp() {
                         style={{width:"30%",marginBottom:"15px"}} 
                         placeholder='ex) 필동' 
                         onChange={onChangeInputHandler}/>
-                </Flx>
+                </Flx> 
 
                 
                     <Input
@@ -194,9 +195,11 @@ function SignUp() {
                         onChange={onChangeInputHandler}/>
                 
 
-                <CommonButton size="small" style={{float:"right"}} onClick={(e) => onAddressChkHandler(e,input.address.region1depthName,input.address.region2depthName,input.address.region3depthName)}>주소 확인</CommonButton>
+                <CommonButton size="small" style={{float:"right"}} onClick={(e) => 
+                  onAddressChkHandler(e,input.address.region1depthName,input.address.region2depthName,input.address.region3depthName,input.address.region4depthName)}>주소 확인</CommonButton>
             </div>
-            <CommonButton onClick={(e) => onSubmitJoinHandler(e)} size='large'>가입하기</CommonButton>
+            <CommonButton onClick={(e) => 
+              onSubmitJoinHandler(e)} size='large'>가입하기</CommonButton>
         </StForm>
     </IntroLayout>
   )
@@ -250,3 +253,4 @@ const StyledInput = styled(Input)`
   width:calc(100% - 168px) !important;
   margin-right:8px;
 `;
+
