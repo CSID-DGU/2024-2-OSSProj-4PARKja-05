@@ -2,7 +2,8 @@ import axios from "axios";
 
 // 요청을 보낼 서버를 지정
 export const instance = axios.create({
-    baseURL: process.env.REACT_APP_SERVER_URL,
+   // baseURL: process.env.REACT_APP_SERVER_URL,
+    baseURL : 'http://localhost:8001',  //백엔드포트
     withCredentials: true, 
 });
 

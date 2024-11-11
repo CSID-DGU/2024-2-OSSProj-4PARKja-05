@@ -18,17 +18,17 @@ function Login() {
         setInput({...input, [e.target.id]: e.target.value})
     };
 
-    const mutation = useMutation(userLogin, {
+    const mutation = useMutation(userLogin, {  // 지도 locationsetting에서 가져온거 -> 지도범위 정해짐
         onSuccess: (response) => {
             localStorage.setItem("refresh_token", response.headers['access_token']);
             sessionStorage.setItem("access_token", response.headers['refresh_token']);
-            sessionStorage.setItem("userId", response.data.data.userId);
-            sessionStorage.setItem("usernickname", response.data.data.nickname);
-            sessionStorage.setItem("userAddress1depth", response.data.data.address.region1depthName);
-            sessionStorage.setItem("userAddress2depth", response.data.data.address.region2depthName);
-            sessionStorage.setItem("userAddress3depth", response.data.data.address.region3depthName);
-            sessionStorage.setItem("userAddressX", response.data.data.address.x);
-            sessionStorage.setItem("userAddressY", response.data.data.address.y);
+            sessionStorage.setItem("userId", response.data.userId);
+            sessionStorage.setItem("usernickname", response.data.nickname);
+            sessionStorage.setItem("userAddress1depth", response.data.address.region1depthName);
+            sessionStorage.setItem("userAddress2depth", response.data.address.region2depthName);
+            sessionStorage.setItem("userAddress3depth", response.data.address.region3depthName);
+            sessionStorage.setItem("userAddressX", response.data.address.x);
+            sessionStorage.setItem("userAddressY", response.data.address.y);
             
             navigate("/BoardList");
         },
@@ -101,4 +101,6 @@ const StForm = styled.form`
         margin-bottom:15px;
     }
 `
+
+
 

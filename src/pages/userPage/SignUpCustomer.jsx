@@ -45,7 +45,7 @@ function SignUpCustomer() {
     // 주소 유효성 확인 핸들러
     const onAddressChkHandler = (e,region1depthName,region2depthName,region3depthName) => {
         e.preventDefault();
-        //console.log(region1depthName,region2depthName,region3depthName);
+        // console.log(region1depthName,region2depthName,region3depthName);
         getAddressChk(region1depthName,region2depthName,region3depthName);
     }
 
@@ -62,12 +62,13 @@ function SignUpCustomer() {
             password:input.password,
             nickname:input.nickname,
             address:{
-                region1depthName:input.address.region1depthName,
-                region2depthName:input.address.region2depthName,
+                region1depthName:input.address.region1depthName,  // 이건 address를 '객체'형식으로 받겠다는 의미
+                region2depthName:input.address.region2depthName,  //      -> 백엔드에서 String()으로 처리해선x
                 region3depthName:input.address.region3depthName,
             }
         };
-        userSignup(userInfo);
+        const userType = 'guest'; // 손님 유저 타입으로 설정
+        userSignup(userInfo, userType);
         navigate('/Login');
     };
 
