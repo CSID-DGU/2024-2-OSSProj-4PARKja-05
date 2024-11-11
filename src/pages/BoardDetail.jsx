@@ -104,7 +104,7 @@ function BoardDetail() {
               height={'40px'}
               borderradius={'50%'}
               src={userDefaultImg}
-              alt={'유저 프로필 이미지'}
+              alt={'유저 프로필 이미지'}//없어도 됨
             />
             <div>
               <DetailH2>{data.nickName}</DetailH2>
@@ -127,7 +127,7 @@ function BoardDetail() {
         </DetailDiv>
         <DetailNav>
           {data.status && <StatusButton color={'black'}>거래완료</StatusButton>}
-          <DetailH1>{Number(data.price).toLocaleString()}원</DetailH1>
+          <DetailH1>{Number(data.price).toLocaleString()}원</DetailH1> {/*수정 필요함*/}
           <div>
             {
               sessionStorage.getItem('usernickname') === data.nickName ? <AiOutlineHeart onClick={onMyBoardClickLike}/>

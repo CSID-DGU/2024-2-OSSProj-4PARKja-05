@@ -30,7 +30,7 @@ function SignUp() {
     // Input창 작성용 onChangehandler
     const onChangeInputHandler = (e) => {
         const { id, value } = e.target;
-        if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName") {
+        if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName" || id === "region4depthName") {
             setInput({
               ...input,
               address: {
