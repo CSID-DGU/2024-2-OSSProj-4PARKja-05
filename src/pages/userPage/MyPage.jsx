@@ -37,9 +37,13 @@ function MyPage() {
     // 게시물 불러오기
     const access_token = sessionStorage.getItem('access_token');
 
-    const { isLoading: isLoadingMyBoard, isError: isErrorMyBoard, data: dataMyBoard, refetch: refetchMyLikeBoard } = useQuery("getMyBoard", () => getMyBoard(access_token));
-    const { isLoading: isLoadingMyLikeBoard, isError: isErrorMyLikeBoard, data: dataMyLikeBoard, refetch: refetchMyBoard } = useQuery("getMylikeBoard", () => getMylikeBoard(access_token));
-    
+    const { isLoading: isLoadingMyBoard, isError: isErrorMyBoard, data: dataMyBoard, refetch: refetchMyLikeBoard } = useQuery("getMyBoard", () => getMyBoard(access_token));/*
+    const { isLoading: isLoadingMyLikeBoard, isError: isErrorMyLikeBoard, data: dataMyLikeBoard, refetch: refetchMyBoard } = useQuery("getMylikeBoard", () => getMylikeBoard(access_token));*/
+          // 여기서 dataMyLikeBoard도 가져오기 때문에..
+          // localhost:3000/MyPage에선, '/api/mypage/myBoard'랑 '/api/like' 둘다 연결이 된 상태여야함
+
+
+
     // 상품 상태 변경 시 mutation 발생
     const soldoutMutation = useMutation(putBoardSoldout,{
         onSuccess: (response) => {
@@ -66,12 +70,12 @@ function MyPage() {
     if(isErrorMyBoard) {
         return <Error />
     }
-    if(isLoadingMyLikeBoard) {
+   /* if(isLoadingMyLikeBoard) {
         return <Loading />
     }
     if(isErrorMyLikeBoard) {
         return <Error />
-    }
+    }*/
 
     // 상세페이지 이동
     const goDetail = (boardId, event) => {
@@ -98,7 +102,7 @@ function MyPage() {
     };
 
     console.log('dataMyBoard',dataMyBoard);
-    console.log('dataMyLikeBoard',dataMyLikeBoard);
+    //console.log('dataMyLikeBoard',dataMyLikeBoard);
   return (
     <Layout>
         <Setbutton type='button' onClick={() => navigate('/Settings')}><SlSettings /></Setbutton>
@@ -125,7 +129,7 @@ function MyPage() {
                             <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
                             <ItemArea>
                                 <ImgBox>
-                                <img src={item.image} alt={item.title} />
+                                <img src={`http://localhost:8001/${item.image}`} alt={item.title} />
                                 </ImgBox>
                                 <Info>
                                 <h2>{item.title}</h2>
@@ -139,7 +143,8 @@ function MyPage() {
                     </Contents>
                     <Contents>
                         {/* 예약내역 영역 */}
-                        {dataMyLikeBoard === undefined || dataMyLikeBoard.length === 0 ? (
+                        
+                        {/*dataMyLikeBoard === undefined || dataMyLikeBoard.length === 0 ? (
                             <NullAlert alertMessage='손님이 예약한 상품이 없어요'/>
                         ) : (
                             dataMyLikeBoard.map((item) => (
@@ -156,7 +161,7 @@ function MyPage() {
                                     </ItemArea>
                                 </ItemBox>
                             ))
-                        )}
+                        )*/}
                     </Contents>
                 </TabSlideArea>
             </TabContentsArea>
