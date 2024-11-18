@@ -134,3 +134,14 @@ export const deleteBoard = (boardId) => {
         console.log(error);
     })
 };
+
+// * 구매내역에 추가
+export const addToPurchaseHistory = (boardId) => {
+  return instance.post(`/api/purchase/${boardId}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error.response.data);
+    });
+};
