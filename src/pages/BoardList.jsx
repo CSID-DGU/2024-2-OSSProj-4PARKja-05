@@ -117,7 +117,7 @@ function BoardList() {
                 <span>{board.nickname}</span> {/* 상점명(사장님의 닉네임) */}
               </ListDetailH3>
               <ListPriceH2>
-                {board.status && <StatusButton color="black">거래완료</StatusButton>}
+                {board.status && <StatusButton color="black">예약완료</StatusButton>}
                 {Number(board.price).toLocaleString()}원
               </ListPriceH2>
             </ListInfoDiv>

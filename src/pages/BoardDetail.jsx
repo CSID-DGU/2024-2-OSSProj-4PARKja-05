@@ -23,6 +23,7 @@ function BoardDetail() {
     refetch();
   }, [])
 
+  /*
   // * 게시글 수정 버튼 클릭
   const navigate = useNavigate();
   const onBoardEdit = () => {
@@ -36,6 +37,7 @@ function BoardDetail() {
       }
     })
   }
+  
 
   // * 게시글 삭제 버튼 클릭
   const onBoardDelete = () => {
@@ -55,6 +57,7 @@ function BoardDetail() {
       navigate('/BoardList');
     }
   })
+  */
 
   // * 작성자가 본인인 게시글에서 찜 버튼 클릭
   const onMyBoardClickLike = () => {
