@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import { SlArrowLeft } from "react-icons/sl";
 import { Input, CommonButton, Flx, IntroLayout } from '../../components/element';
 import { useMutation } from 'react-query';
-import { getIdChk, userSignup } from '../../api/users';  
+import { getIdChk, userSignup } from '../../api/users';
 import DaumPostcode from 'react-daum-postcode';
 
 function SignUp() {
@@ -12,9 +12,19 @@ function SignUp() {
     const navigate = useNavigate();
     const mutate = useMutation();
 
-    const completeHandler = data => {
-        console.log(data);
-      };
+    // modalstate 상태 관리
+    const [open, setOpen] = useState(false);
+
+    // 모달 상태를 토글하는 함수
+    const modalstate = () => {
+        setOpen((prev) => !prev); // 열림/닫힘 토글
+    };
+
+    // 주소 검색 완료 핸들러
+    const completeHandler = (data) => {
+        console.log(data); // 선택된 주소 데이터
+        setOpen(false); // 주소 선택 후 모달 닫기
+    };
 
     //Input창 저장용 state
     const [input, setInput] = useState({  // 사장님계정에 맞게 입력란 수정
@@ -165,40 +175,26 @@ function SignUp() {
                         onChange={onChangeInputHandler}/>
                 </Flx>
 
-                {/*<Flx>
-                    <label htmlFor='address' style={{width:"65px"}} >주소</label>
-                    <Input 
-                        type="text" 
-                        value={input?.address?.region1depthName} 
-                        id="region1depthName"
-                        style={{width:"30%",marginBottom:"15px"}} 
-                        placeholder='ex) 서울특별시' 
-                        onChange={onChangeInputHandler}/>
-                    <Input 
-                        type="text" 
-                        value={input?.address?.region2depthName} 
-                        id='region2depthName' 
-                        style={{width:"30%",marginBottom:"15px"}} 
-                        placeholder='ex) 중구' 
-                        onChange={onChangeInputHandler}/>
-                    <Input 
-                        type="text" 
-                        value={input?.address?.region3depthName} 
-                        id='region3depthName'
-                        style={{width:"30%",marginBottom:"15px"}} 
-                        placeholder='ex) 필동' 
-                        onChange={onChangeInputHandler}/>
-                </Flx> 
-                
-                
-                    <Input
-                        type="text" 
-                        value={input?.address?.region4depthName} 
-                        id='region4depthName'
-                        style={{width:"62%",marginBottom:"15px",marginLeft:"60px"}} 
-                        placeholder='ex) 동국대 정보문화관Q202' 
-                        onChange={onChangeInputHandler}/>
-                */}
+                <Flx>
+                    <label htmlFor='address' style={{width:"65px"}}>주소</label>
+    
+                    {/* 주소 검색 버튼 */}
+                    <div onClick={modalstate} style={{cursor: "pointer", marginLeft: "10px", color: "#007BFF"}}>
+                        주소검색
+                    </div>
+
+                    {/* DaumPostcode 모달 */}
+                    {open === true && (
+                        <div style={{position: "absolute", zIndex: "1000", backgroundColor: "white", padding: "10px", border: "1px solid #ddd"}}>
+                            <DaumPostcode 
+                                onComplete={completeHandler} 
+                                autoClose 
+                                style={{width: "400px", height: "500px"}}
+                            />
+                        </div>
+                    )}
+                </Flx>
+                                  
                 <div onClick={modalstate}>주소검색</div>
                 {open === true && (
                 <div>
@@ -209,6 +205,13 @@ function SignUp() {
                 <CommonButton size="small" style={{float:"right"}} onClick={(e) => 
                   onAddressChkHandler(e,input.address.region1depthName,input.address.region2depthName,input.address.region3depthName,input.address.region4depthName)}>주소 확인</CommonButton>
             </div>
+            <Input
+                        type="text" 
+                        value={input?.address?.region4depthName} 
+                        id='region4depthName'
+                        style={{width:"62%",marginBottom:"15px",marginLeft:"60px"}} 
+                        placeholder='ex) 동국대 정보문화관Q202' 
+                        onChange={onChangeInputHandler}/>
             <CommonButton onClick={(e) => 
               onSubmitJoinHandler(e)} size='large'>가입하기</CommonButton>
         </StForm>

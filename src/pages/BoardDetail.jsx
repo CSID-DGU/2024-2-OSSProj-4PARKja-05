@@ -1,196 +1,188 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { SlArrowLeft } from "react-icons/sl";
-import { Input, CommonButton, Flx, IntroLayout } from '../../components/element';
-import { useMutation } from 'react-query';
-import { getIdChk, userSignup } from '../../api/users';  
-import DaumPostcode from 'react-daum-postcode';
+import { Layout, Image, StatusButton } from '../components/element';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+//import userDefaultImg from '../assets/user_default_image.jpg';
+import { useQuery, useMutation } from 'react-query';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getBoardDetail, setLikeStatus, addToPurchaseHistory } from '../api/boards';
 
-function SignUp() {
-    const navigate = useNavigate();
-    const [isOpen, setIsOpen] = useState(false); // 모달 상태를 위한 state 추가
+function BoardDetail() {
+  const currentBoardId = useLocation().pathname.slice(13);
+  const [currentLike, setCurrentLike] = useState(null);
 
-    const completeHandler = data => {
-        console.log(data);
-    };
+  // * 게시글 상세 조회
+  const { data, refetch } = useQuery(['getBoardDetail', currentBoardId], () => getBoardDetail(currentBoardId), {
+    staleTime: Infinity,
+    onSuccess: (data) => {
+      setCurrentLike(data.likeStatus);
+    },
+  });
 
-    // Input창 저장용 state
-    const [input, setInput] = useState({  
-        userId: '',
-        password: '',
-        pwConfirm: '',
-        nickname: '',
-        time: '', 
-        userType: 'owner',
-    });
+  const navigate = useNavigate();
 
-    // 모달 토글 함수
-    const toggleModal = () => {
-        setIsOpen(!isOpen); // 모달 상태를 토글
-    };
+  // * 게시글 찜하기 useMutation
+  const setLikeStatusMutation = useMutation(setLikeStatus, {
+    onSuccess: (response) => {
+      if (response === '게시판 찜 하기 성공') {
+        alert('해당 게시글을 관심 목록에 추가하였습니다.');
+        setCurrentLike(true);
+      } else {
+        alert('해당 게시글을 관심 목록에서 제거하였습니다.');
+        setCurrentLike(false);
+      }
+    }
+  });
 
-    const onChangeInputHandler = (e) => {
-        const { id, value } = e.target;
-        setInput({
-            ...input,
-            [id]: value,
-        });
-    };
+  // * 찜 버튼 클릭 핸들러
+  const onBoardClickLike = () => {
+    setLikeStatusMutation.mutate(currentBoardId);
+  };
 
-    const onIdChkHandler = (e) => {
-        e.preventDefault();
-        getIdChk(input.userId);
-    };
+  // * 구매내역에 추가하는 useMutation
+  const addToPurchaseMutation = useMutation(addToPurchaseHistory, {
+    onSuccess: () => {
+      alert('구매내역에 추가되었습니다.');
+      navigate('/MyPageCustomer');
+    }
+  });
 
-    // 가입하기 버튼 클릭 이벤트핸들러
-    const onSubmitJoinHandler = (e) => {
-        e.preventDefault();
-        const userInfo = {
-            userId: input.userId,
-            password: input.password,
-            nickname: input.nickname,
-            time: input.time
-        };
-        const userType = 'owner'; 
-        userSignup(userInfo, userType);
-        navigate('/Login');
-    };
+  // * 예약하기 버튼 클릭 핸들러
+  const onReserve = () => {
+    addToPurchaseMutation.mutate(currentBoardId);
+    navigate(`/ReserveNotice`);
+  };
 
-    return (
-        <IntroLayout>
-            <Backbutton type='button' onClick={() => navigate(-1)}><SlArrowLeft /></Backbutton>
-            <h1 style={{marginTop:"40px",marginBottom:"0px"}}>회원가입</h1>
-            <StForm>
-                <div>
-                    <Flx>
-                        <label htmlFor='nickname'>상점명</label>
-                        <Input 
-                            type="text" 
-                            value={input.nickname} 
-                            id='nickname' 
-                            placeholder='정확한 상점명' 
-                            onChange={onChangeInputHandler}
-                        />
-                        {input.nickname.length > 0 ? null : <p className='alertText'>정확한 상점명을 입력해 주세요.</p>}
-                    </Flx>
-
-                    <Flx>
-                        <label htmlFor='userId'>아이디</label>
-                        <StyledInput 
-                            type="text" 
-                            value={input.userId} 
-                            id='userId' 
-                            placeholder='5~10글자 사이 영문 소문자,숫자' 
-                            onChange={onChangeInputHandler}
-                        />
-                        <CommonButton size='small' onClick={(e) => onIdChkHandler(e, input.userId)}>중복확인</CommonButton>
-                        {
-                            /^[a-z0-9]{8,15}$/.test(input.userId) ? null : 
-                            <p className='alertText'>8~15글자 사이 영문 소문자,숫자를 사용하세요.</p>
-                        }
-                    </Flx>
-                    
-                    <Flx>
-                        <label htmlFor='password'>패스워드</label>
-                        <Input 
-                            type="password" 
-                            value={input.password} 
-                            id='password' 
-                            placeholder='8~15글자 사이 영문,숫자,특수문자' 
-                            onChange={onChangeInputHandler}
-                        />
-                        {
-                            /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,.<>?[\]\\/]{8,15}$/.test(input.password) ? null : 
-                            <p className='alertText'>8~15글자 사이 영문,숫자,특수문자를 사용하세요.</p>
-                        }
-                    </Flx>
-
-                    <Flx>
-                        <label htmlFor='pwConfirm'>중복확인</label>
-                        <Input 
-                            type="password" 
-                            value={input.pwConfirm} 
-                            id='pwConfirm' 
-                            placeholder='비밀번호 확인을 위해 한번 더 입력해주세요' 
-                            onChange={onChangeInputHandler}
-                        />
-                        {
-                            input.password === input.pwConfirm ? null : 
-                            <p className='alertText'>비밀번호가 일치하지 않습니다.</p>
-                        }
-                    </Flx>
-
-                    <Flx>
-                        <label htmlFor='time'>영업시간</label>
-                        <Input 
-                            type="text" 
-                            value={input.time} 
-                            id="time" 
-                            placeholder='ex) 매일 10:00 - 22:00' 
-                            onChange={onChangeInputHandler}
-                        />
-                    </Flx>
-
-                    {/* 주소검색 모달 열기 버튼 */}
-                    <div onClick={toggleModal}>주소검색</div>
-                    {isOpen && (
-                        <div>
-                            <DaumPostcode onComplete={completeHandler} />
-                        </div>
-                    )}
-                </div>
-                <CommonButton onClick={onSubmitJoinHandler} size='large'>가입하기</CommonButton>
-            </StForm>
-        </IntroLayout>
-    );
+  return (
+    <Layout>
+      {data && (
+        <ContentSection>
+          <Image
+            width={'440px'}
+            height={'440px'}
+            borderradius={'5px'}
+            src={data.image}
+            alt={'상품 이미지'}
+          />
+          <UserDiv>
+            <UserInfoDiv>
+              {/*<Image
+                width={'40px'}
+                height={'40px'}
+                borderradius={'50%'}
+                src={userDefaultImg}
+                alt={'유저 프로필 이미지'}
+              />*/}
+              <div>
+                <DetailH2>{data.nickName}</DetailH2>
+                <DetailH3>{data.address}</DetailH3>
+              </div>
+            </UserInfoDiv>
+          </UserDiv>
+          <DetailDiv>
+            <DetailH1>{data.title}</DetailH1>
+            <DetailContent>{data.content.replace(/<br>/g, '\n')}</DetailContent>
+          </DetailDiv>
+          <DetailNav>
+            {data.status && <StatusButton color={'black'}>예약완료</StatusButton>}
+            <DetailH1>{Number(data.price).toLocaleString()}원</DetailH1>
+            <div>
+              {currentLike ? (
+                <AiFillHeart onClick={onBoardClickLike} />
+              ) : (
+                <AiOutlineHeart onClick={onBoardClickLike} />
+              )}
+            </div>
+            <ReserveButton onClick={onReserve}>예약하기</ReserveButton>
+          </DetailNav>
+        </ContentSection>
+      )}
+    </Layout>
+  );
 }
 
-export default SignUp;
+export default BoardDetail;
 
-const Backbutton = styled.button`
-    position:relative;
-    top:20px;
-    left:0;
-    border:none;
-    background-color:transparent;
-    font-size:22px;
-    color:#777;
-`;
-const StForm = styled.form`
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    height:calc(100vh - 190px);
-    padding-top:30px;
-    box-sizing:border-box;
-    &>div>div{
-        position:relative;
-    }
+const ContentSection = styled.section`
+  margin-top: 20px;
+;
+`
+const UserDiv = styled.div`
+  padding: 15px 5px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+;`
 
-    & label{
-        display:inline-block;
-        width:65px;
-        line-height:43px;
-        font-weight:500;
-    }
-    & .alertText{
-        position:absolute;
-        top:45px;
-        display:inline-block;
-        color:#f00;
-        margin:3px 0 25px;
-        transform:translateX(70px);
-        font-size:0.8rem;
-    }
-    & input{
-        display:inline-block;
-        width:calc(100% - 65px);
-        margin-bottom:35px;
-    }
-`;
-const StyledInput = styled(Input)`
-  display: inline-block;
-  width:calc(100% - 168px) !important;
-  margin-right:8px;
-`;
+const UserInfoDiv = styled.div`
+  display: flex;
+  align-items: center;
+  & img {
+    margin-right: 10px;
+  }
+;`
+
+const DetailDiv = styled.div`
+  margin-top: 15px;
+  margin-left: 5px;
+;
+`
+const DetailH1 = styled.h1`
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+;`
+
+const DetailH2 = styled.h2`
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+;`
+
+const DetailH3 = styled.h3`
+  margin: 0;
+  font-size: 15px;
+  font-weight: 300;
+  color: grey;
+;`
+
+const DetailContent = styled.p`
+  margin: 25px 0 90px 0;
+;`
+
+const DetailNav = styled.nav`
+  height: 70px;
+  width: 440px;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  bottom: 60px;
+  background-color: #FFFFFF;
+  border-top: 1px solid lightgrey;
+  & div {
+    width: 40px;
+    height: 40px;
+    padding-right: 5px;
+    padding-left: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ED8C26;
+    border-left: 2px solid lightgrey;
+    cursor: pointer;
+  }
+  & div:last-child {
+    margin-left: auto;
+  }
+;`
+
+const ReserveButton = styled.button`
+  margin-left: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  `

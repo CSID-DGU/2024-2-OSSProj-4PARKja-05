@@ -143,10 +143,10 @@ function MyPage() {
                     </Contents>
                     <Contents>
                         {/* 예약내역 영역 */}
-                        {dataMyLikeBoard === undefined || dataMyLikeBoard.length === 0 ? (
+                        {dataMyBoard === undefined || dataMyBoard.length === 0 ? (
                             <NullAlert alertMessage='손님이 예약한 상품이 없어요'/>
                         ) : (
-                            <ReservationList/>
+                            <ReservationList />
                         )}
                     </Contents>
                 </TabSlideArea>
