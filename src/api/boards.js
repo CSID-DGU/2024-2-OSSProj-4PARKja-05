@@ -3,7 +3,11 @@ import { instance, tokenInstance } from './axios';
 
 // * 게시글 작성
 export const submitBoard = (boardFormData) => {
-  return instance.post(`/api/board`, boardFormData)
+  return instance.post(`/api/board/write`, boardFormData, {
+    headers: {
+      'Content-Type': 'multipart/form-data', // FormData를 전송할 때 필요한 Content-Type
+    }
+  })
   .then((response) => {
     return response.data;
   })
@@ -26,7 +30,7 @@ export const getBoards = (setPage) => {
 
 // * 게시글 상세 조회
 export const getBoardDetail = (currentBoardId) => {
-  return instance.get(`/api/board/${currentBoardId}`)
+  return instance.get(`/api/board/detail/${currentBoardId}`)
   .then((response) => {
     return response.data.data;
   })
@@ -38,7 +42,7 @@ export const getBoardDetail = (currentBoardId) => {
 // * 게시글 수정
 export const setEditBoard = (boardEditData) => {
   const { boardId, ...editData } = boardEditData;
-  return instance.put(`/api/board/${boardId}`, editData)
+  return instance.put(`/api/board/modify/${boardId}`, editData)
   .then((response) => {
     return response.data;
   })
@@ -49,7 +53,7 @@ export const setEditBoard = (boardEditData) => {
 
 // * 게시글 삭제
 export const setDeleteBoard = (currentBoardId) => {
-  return instance.delete(`/api/board/${currentBoardId}`)
+  return instance.delete(`/api/board/delete/${currentBoardId}`)
   // TODO 실패 시 http status 코드에 따라 다른 alert msg 띄우기
   .then((response) => {
     return response;
@@ -70,9 +74,9 @@ export const setLikeStatus = (currentBoardId) => {
   })
 }
 
-// * 내 게시글 조회
+// * 내 게시글 조회,,   http://localhost:3000/MyPage부분.
 export const getMyBoard = () => {
-    return instance.get('/api/myBoard')
+    return instance.get('/api/mypage/myBoard')
     .then((response) => {
         // console.log(response)
         return response.data.data;
@@ -85,7 +89,7 @@ export const getMyBoard = () => {
 
 // 마이페이지 : 찜목록 조회
 export const getMylikeBoard = () => {
-    return instance.get('/api/like')
+    return instance.get('/api/mypage/like')
     .then((response) => {
         // console.log(response);
         return response.data.data;

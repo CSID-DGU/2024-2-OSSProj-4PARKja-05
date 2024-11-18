@@ -122,6 +122,11 @@ function BoardWrite() {
     boardFormData.append('production_date', productionDate); // 식품 생산 날짜
     boardFormData.append('sale_end_date', saleEndDate);
 
+    // 여기서 FormData의 내용을 일단 확인
+  for (var pair of boardFormData.entries()) {
+    console.log(pair[0] + ', ' + pair[1]);
+  }
+
     submitBoardMutaion.mutate(boardFormData);
   }
 
