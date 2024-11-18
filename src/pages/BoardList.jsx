@@ -36,7 +36,7 @@ function BoardList() {
     const setPage = {
       page: 0,
       size: 100,
-      sort: ["createdAt,DESC"],
+      sort: ["createdAt,DESC"], 
     };
     getBoardListMutation.mutate(setPage);
   };
@@ -100,7 +100,7 @@ function BoardList() {
         ))}
       </CategorySection>
 
-      {/* 게시물 리스트 섹션 */}
+      {/* 게시물 리스트 섹션 */} 
       <ListSection>
         {filteredBoardData && filteredBoardData.map((board) => (
           <ListOneDiv onClick={() => setPageChange(board.id)} key={board.id}>
@@ -108,7 +108,7 @@ function BoardList() {
               width="130px"
               height="130px"
               borderradius="10px"
-              src={board.image}
+              src={`http://localhost:8001${board.image}`}   // 백엔드에서 읽어오는 이미지 경로가 필요
               alt="상품 이미지"
             />
             <ListInfoDiv>
@@ -117,7 +117,7 @@ function BoardList() {
                 <span>{board.nickname}</span> {/* 상점명(사장님의 닉네임) */}
               </ListDetailH3>
               <ListPriceH2>
-                {board.status && <StatusButton color="black">거래완료</StatusButton>}
+                {board.status && <StatusButton color="black">예약완료</StatusButton>}
                 {Number(board.price).toLocaleString()}원
               </ListPriceH2>
             </ListInfoDiv>
@@ -285,3 +285,4 @@ const WriteButton = styled.button`
     transform: initial;
   }
 `;
+

@@ -12,6 +12,7 @@ function BoardWrite() {
   const [original_price, setPrice] = useState('');
   const [discount_rate, setRate] = useState('');
   const [category, setCategory] = useState(''); // 카테고리 상태 추가
+  const [productionDate, setProductionDate] = useState(''); // 식품 생산 날짜 상태 추가
   const [saleEndDate, setSaleEndDate] = useState(''); // 판매 마감 날짜 상태 추가
   const [content, setContent] = useState('');
   const [preview, setPreview] = useState('');
@@ -28,6 +29,7 @@ function BoardWrite() {
       setContent(location.state.content);
       setPreview(location.state.image);
       setCategory(location.state.category); // 수정시 카테고리 설정
+      setProductionDate(location.state.productionDate); // 수정 시 식품 생산 날짜 설정
       setSaleEndDate(location.state.saleEndDate); // 수정 시 판매 마감 날짜 설정
     }
   }, [])
@@ -77,13 +79,18 @@ function BoardWrite() {
     if (newRate === '') {
       setRate('');
     } else {
-      setRate(Number(newRate).toLocaleString());
+      setRate(Number(newRate));
     }
   }
 
   // * 카테고리 입력값 감지
-  const onCategory = (e) => {
+  const onCategoryChange = (e) => {
     setCategory(e.target.value);
+  }
+
+  // * 식품 생산 날짜 입력값 감지
+  const onProductionDateChange = (e) => {
+    setProductionDate(e.target.value);
   }
 
   // * 판매 마감 날짜 입력값 감지
@@ -104,14 +111,21 @@ function BoardWrite() {
       return;
     }
 
+    // 데이터 입력 형식
     const boardFormData = new FormData();
     boardFormData.append('title', title);
     boardFormData.append('image', file);
     boardFormData.append('content', content.replaceAll(/\n/g, '<br>'));
     boardFormData.append('original_price', original_price.replaceAll(',', ''));
-    boardFormData.append('discount_rate', discount_rate.replaceAll(',', ''));
+    boardFormData.append('discount_rate', discount_rate);
     boardFormData.append('category', category);
+    boardFormData.append('production_date', productionDate); // 식품 생산 날짜
     boardFormData.append('sale_end_date', saleEndDate);
+
+    // 여기서 FormData의 내용을 일단 확인
+  for (var pair of boardFormData.entries()) {
+    console.log(pair[0] + ', ' + pair[1]);
+  }
 
     submitBoardMutaion.mutate(boardFormData);
   }
@@ -127,18 +141,20 @@ function BoardWrite() {
   // * 게시글 수정 버튼 클릭
   const onEditClick = (e) => {
     e.preventDefault();
-    if (title === '' || original_price === '' || discount_rate === '' || category === '' || saleEndDate === '' || content === '') {
+    if (title === '' || original_price === '' || discount_rate === '' || category === '' || productionDate === '' || saleEndDate === '' || content === '') {
       alert('모든 내용을 입력해주세요.');
       return;
     }
 
+    // *  
     const boardEditData = {
       boardId: location.state.boardId, 
       title,
       content: content.replaceAll(/\n/g, '<br>'),
       original_price: original_price.replaceAll(',', ''),
-      discount_rate: discount_rate.replaceAll(',', ''),
+      discount_rate: discount_rate,
       category,  // 카테고리 추가
+      production_date: productionDate,
       sale_end_date: saleEndDate
     }
 
@@ -204,8 +220,7 @@ function BoardWrite() {
               onChange={onPriceChange}
             />
           </SetInfo>
-          <SetInfo style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ flex: 1 }}>
+          <SetInfo>
             <BoardLabel htmlFor="discount_rate">할인율</BoardLabel>
             <BoardInput
               type="text"
@@ -214,7 +229,6 @@ function BoardWrite() {
               value={discount_rate}
               onChange={onRateChange}
             />
-          </div>
           </SetInfo>
           <SetInfo>
             <BoardLabel htmlFor="category">카테고리</BoardLabel>
@@ -222,7 +236,7 @@ function BoardWrite() {
               id="category"
               name="category"
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={onCategoryChange}
             >
               <option value="">선택하세요</option>
               <option value="bread">빵</option>
@@ -231,6 +245,16 @@ function BoardWrite() {
               <option value="grocery">마트</option>
               <option value="etc">기타</option>
             </CategorySelect>
+          </SetInfo>
+          <SetInfo>
+            <BoardLabel htmlFor="title">식품 생산일</BoardLabel>
+            <BoardInput
+              type="date"
+              id="productionDate"
+              name="productionDate"
+              value={productionDate}
+              onChange={onProductionDateChange}
+            />
           </SetInfo>
           <SetInfo>
             <BoardLabel htmlFor="title">판매 종료일</BoardLabel>

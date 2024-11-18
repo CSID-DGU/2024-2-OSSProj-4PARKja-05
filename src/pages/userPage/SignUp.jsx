@@ -46,10 +46,10 @@ function SignUp() {
         }
   };
     // 주소 유효성 확인 핸들러
-    const onAddressChkHandler = (e,region1depthName,region2depthName,region3depthName) => {
+    const onAddressChkHandler = (e,region1depthName,region2depthName,region3depthName, region4depthName) => {
         e.preventDefault();
         // console.log(region1depthName,region2depthName,region3depthName);
-        getAddressChk(region1depthName,region2depthName,region3depthName);
+        getAddressChk(region1depthName,region2depthName,region3depthName,region4depthName);
     }
 
     const onIdChkHandler = (e,userId) => {
@@ -253,4 +253,5 @@ const StyledInput = styled(Input)`
   width:calc(100% - 168px) !important;
   margin-right:8px;
 `;
+
 
