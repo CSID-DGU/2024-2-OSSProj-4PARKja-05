@@ -63,6 +63,9 @@ export const userLogin = (userInfo) => {
     return instance.post('/api/member/login', userInfo)
     .then((response) => {
         console.log(response);
+        // 서버에서 실제로 'access_token'과 'refresh_token'을 제공하는지 확인
+        localStorage.setItem("refresh_token", response.headers['refresh_token']);
+        sessionStorage.setItem("access_token", response.headers['access_token']);
         return response;
     })
     .catch((error) => {
@@ -85,6 +88,10 @@ export const userLogout = () => {
         // throw error;
     })
 };
+
+
+
+
 
 
 

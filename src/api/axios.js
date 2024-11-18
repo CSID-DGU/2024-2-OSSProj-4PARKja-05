@@ -2,8 +2,8 @@ import axios from "axios";
 
 // 요청을 보낼 서버를 지정
 export const instance = axios.create({
-   // baseURL: process.env.REACT_APP_SERVER_URL,
-    baseURL : 'http://localhost:8001',  //백엔드포트
+    baseURL: process.env.REACT_APP_SERVER_URL,  // 서버 url
+    // baseURL : 'http://localhost:8001',  //백엔드포트
     withCredentials: true, 
 });
 
@@ -14,8 +14,8 @@ instance.interceptors.request.use(
       const refreshToken = localStorage.getItem("refresh_token");
       
       if (accessToken && refreshToken) {
-        config.headers['Access_token'] = `${accessToken}`;
-        config.headers['Refresh_token'] = `${refreshToken}`;
+        config.headers['access_token'] = `${accessToken}`;
+        config.headers['refresh_token'] = `${refreshToken}`;
       }
       return config;
     },
@@ -25,12 +25,12 @@ instance.interceptors.request.use(
 );
 
 const refresh = async (config) => {
-    const expireAt = sessionStorage.getItem('expireAt');
-    let token = sessionStorage.getItem("access_token");
-    console.log('만료확인');
+    // const expireAt = sessionStorage.getItem('expireAt');
+    // let token = sessionStorage.getItem("access_token");
+    // console.log('만료확인');
 
-    if(mockComponent(expireAt).diff(moment()) < 0){
-      const res = tokenInstance.post('/api/member/logout');
-     }
+    // if(mockComponent(expireAt).diff(moment()) < 0){
+    //  const res = tokenInstance.post('/api/member/logout');
+    // }
 }
 

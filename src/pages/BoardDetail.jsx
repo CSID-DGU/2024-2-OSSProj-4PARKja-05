@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { Layout, Image, StatusButton } from '../components/element';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import userDefaultImg from '../assets/user_default_image.jpg';
+//import userDefaultImg from '../assets/user_default_image.jpg';
 import { useQuery, useMutation } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getBoardDetail, setDeleteBoard, setLikeStatus } from '../api/boards';
+import { getBoardDetail, setLikeStatus, addToPurchaseHistory } from '../api/boards';
 
 function BoardDetail() {
   const currentBoardId = useLocation().pathname.slice(13);
-  const [currentLike, setCurrentLike] = useState(null)
+  const [currentLike, setCurrentLike] = useState(null);
 
   // * 게시글 상세 조회
   const { data, refetch } = useQuery(['getBoardDetail', currentBoardId], () => getBoardDetail(currentBoardId), {
@@ -19,130 +19,88 @@ function BoardDetail() {
     },
   });
 
-  useEffect(() => {
-    refetch();
-  }, [])
-
-  // * 게시글 수정 버튼 클릭
   const navigate = useNavigate();
-  const onBoardEdit = () => {
-    navigate('/BoardWrite', {
-      state: {
-        boardId: currentBoardId,
-        title: data.title,
-        price: data.price,
-        content: data.content,
-        image: data.image,
-      }
-    })
-  }
-
-  // * 게시글 삭제 버튼 클릭
-  const onBoardDelete = () => {
-    const deleteConfirm = window.confirm('게시글을 삭제하시겠습니까?');
-    if (!deleteConfirm) {
-      alert('게시글 삭제를 취소하였습니다.');
-      return;
-    } else {
-      deleteBoardMutation.mutate(currentBoardId);
-    }
-  }
-
-  // * 게시글 삭제 useMutation
-  const deleteBoardMutation = useMutation(setDeleteBoard, {
-    onSuccess: () => {
-      alert('게시글이 삭제되었습니다.');
-      navigate('/BoardList');
-    }
-  })
-
-  // * 작성자가 본인인 게시글에서 찜 버튼 클릭
-  const onMyBoardClickLike = () => {
-    alert('본인이 작성한 게시글은 찜할 수 없습니다.');
-  }
-
-  // * 게시글 찜하기 / 찜하기 해제
-  const onBoardClickLike = () => {
-    setLikeStatusMutation.mutate(currentBoardId);
-  }
 
   // * 게시글 찜하기 useMutation
   const setLikeStatusMutation = useMutation(setLikeStatus, {
     onSuccess: (response) => {
       if (response === '게시판 찜 하기 성공') {
-        alert('해당 게시글을 찜목록에 추가하였습니다.');
+        alert('해당 게시글을 관심 목록에 추가하였습니다.');
         setCurrentLike(true);
       } else {
-        alert('해당 게시글을 찜목록에서 제거하였습니다.');
+        alert('해당 게시글을 관심 목록에서 제거하였습니다.');
         setCurrentLike(false);
       }
     }
-  })
+  });
+
+  // * 찜 버튼 클릭 핸들러
+  const onBoardClickLike = () => {
+    setLikeStatusMutation.mutate(currentBoardId);
+  };
+
+  // * 구매내역에 추가하는 useMutation
+  const addToPurchaseMutation = useMutation(addToPurchaseHistory, {
+    onSuccess: () => {
+      alert('구매내역에 추가되었습니다.');
+      navigate(`/MyPageCustomer`);
+    }
+  });
 
   // * 예약하기 버튼 클릭 핸들러
   const onReserve = () => {
-    //navigate(`/ReserveNotice/${currentBoardId}`);
-    navigate(`/ReserveNotice`);
+    addToPurchaseMutation.mutate(currentBoardId);
   };
 
   return (
     <Layout>
-    {
-      data && 
-      <ContentSection>
-        <Image
-          width={'440px'}
-          height={'440px'}
-          borderradius={'5px'}
-          src={data.image}
-          alt={'상품 이미지'}
+      {data && (
+        <ContentSection>
+          <Image
+            width={'440px'}
+            height={'440px'}
+            borderradius={'5px'}
+            src={data.image}
+            alt={'상품 이미지'}
           />
-        <UserDiv>
-          <UserInfoDiv>
-            <Image
-              width={'40px'}
-              height={'40px'}
-              borderradius={'50%'}
-              src={userDefaultImg}
-              alt={'유저 프로필 이미지'}//없어도 됨
-            />
+          <UserDiv>
+            <UserInfoDiv>
+              {/*<Image
+                width={'40px'}
+                height={'40px'}
+                borderradius={'50%'}
+                src={userDefaultImg}
+                alt={'유저 프로필 이미지'}
+              />*/}
+              <div>
+                <DetailH2>{data.nickName}</DetailH2>
+                <DetailH3>{data.address}</DetailH3>
+              </div>
+            </UserInfoDiv>
+          </UserDiv>
+          <DetailDiv>
+            <DetailH1>{data.title}</DetailH1>
+            <DetailContent>{data.content.replace(/<br>/g, '\n')}</DetailContent>
+          </DetailDiv>
+          <DetailNav>
+            {data.status && <StatusButton color={'black'}>예약완료</StatusButton>}
+            <DetailH1>{Number(data.price).toLocaleString()}원</DetailH1>
             <div>
-              <DetailH2>{data.nickName}</DetailH2>
-              <DetailH3>{data.address}</DetailH3>
+              {currentLike ? (
+                <AiFillHeart onClick={onBoardClickLike} />
+              ) : (
+                <AiOutlineHeart onClick={onBoardClickLike} />
+              )}
             </div>
-          </UserInfoDiv>
-          {
-            sessionStorage.getItem('usernickname') === data.nickName &&
-              <UserEditDiv>
-                <span onClick={onBoardEdit}>수정하기</span>
-                <span onClick={onBoardDelete}>삭제하기</span>
-              </UserEditDiv>
-          }
-        </UserDiv>
-        <DetailDiv>
-          <DetailH1>{data.title}</DetailH1>
-          <DetailContent>
-            {data.content.replace(/<br>/g, '\n')}
-          </DetailContent>
-        </DetailDiv>
-        <DetailNav>
-          {data.status && <StatusButton color={'black'}>거래완료</StatusButton>}
-          <DetailH1>{Number(data.price).toLocaleString()}원</DetailH1> {/*수정 필요함*/}
-          <div>
-            {
-              sessionStorage.getItem('usernickname') === data.nickName ? <AiOutlineHeart onClick={onMyBoardClickLike}/>
-              : currentLike ? <AiFillHeart onClick={onBoardClickLike} /> : <AiOutlineHeart onClick={onBoardClickLike} />
-            }
-          </div>
-          <ReserveButton onClick={onReserve}>예약하기</ReserveButton>
-        </DetailNav>
-      </ContentSection>
-    }
+            <ReserveButton onClick={onReserve}>예약하기</ReserveButton>
+          </DetailNav>
+        </ContentSection>
+      )}
     </Layout>
-  )
+  );
 }
 
-export default BoardDetail
+export default BoardDetail;
 
 const ContentSection = styled.section`
   margin-top: 20px;
@@ -160,17 +118,6 @@ const UserInfoDiv = styled.div`
   align-items: center;
   & img {
     margin-right: 10px;
-  }
-`;
-
-const UserEditDiv = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 14px;
-  color: grey;
-  & span {
-    cursor: pointer;
   }
 `;
 
