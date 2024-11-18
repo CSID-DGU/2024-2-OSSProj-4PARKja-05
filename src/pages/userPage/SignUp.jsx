@@ -12,6 +12,20 @@ function SignUp() {
     const navigate = useNavigate();
     const mutate = useMutation();
 
+    // modalstate 상태 관리
+    const [open, setOpen] = useState(false);
+
+    // 모달 상태를 토글하는 함수
+    const modalstate = () => {
+        setOpen((prev) => !prev); // 열림/닫힘 토글
+    };
+
+    // 주소 검색 완료 핸들러
+    const completeHandler = (data) => {
+        console.log(data); // 선택된 주소 데이터
+        setOpen(false); // 주소 선택 후 모달 닫기
+    };
+
     //Input창 저장용 state
     const [input, setInput] = useState({  // 사장님계정에 맞게 입력란 수정
         userId:'',
@@ -163,36 +177,6 @@ function SignUp() {
 
                 <Flx>
                     <label htmlFor='address' style={{width:"65px"}}>주소</label>
-    
-                    {/* 1depth 주소 */}
-                    <Input 
-                        type="text" 
-                        value={input?.address?.region1depthName || ''} 
-                        id="region1depthName"
-                        style={{width:"30%", marginBottom:"15px"}} 
-                        placeholder='ex) 서울특별시' 
-                        onChange={onChangeInputHandler}
-                    />
-    
-                    {/* 2depth 주소 */}
-                    <Input 
-                        type="text" 
-                        value={input?.address?.region2depthName || ''} 
-                        id="region2depthName" 
-                        style={{width:"30%", marginBottom:"15px"}} 
-                        placeholder='ex) 중구' 
-                        onChange={onChangeInputHandler}
-                    />
-    
-                    {/* 3depth 주소 */}
-                    <Input 
-                        type="text" 
-                        value={input?.address?.region3depthName || ''} 
-                        id="region3depthName"
-                        style={{width:"30%", marginBottom:"15px"}} 
-                        placeholder='ex) 필동' 
-                        onChange={onChangeInputHandler}
-                    />
     
                     {/* 주소 검색 버튼 */}
                     <div onClick={modalstate} style={{cursor: "pointer", marginLeft: "10px", color: "#007BFF"}}>

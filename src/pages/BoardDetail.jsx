@@ -6,10 +6,12 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useQuery, useMutation } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getBoardDetail, setLikeStatus, addToPurchaseHistory } from '../api/boards';
+import MyPageCustomer from './userPage/MyPageCustomer';
 
 function BoardDetail() {
   const currentBoardId = useLocation().pathname.slice(13);
   const [currentLike, setCurrentLike] = useState(null);
+  const navigate = useNavigate();
 
   // * 게시글 상세 조회
   const { data, refetch } = useQuery(['getBoardDetail', currentBoardId], () => getBoardDetail(currentBoardId), {
@@ -58,16 +60,6 @@ function BoardDetail() {
     }
   })
   */
-
-  // * 작성자가 본인인 게시글에서 찜 버튼 클릭
-  const onMyBoardClickLike = () => {
-    alert('본인이 작성한 게시글은 찜할 수 없습니다.');
-  }
-
-  // * 게시글 찜하기 / 찜하기 해제
-  const onBoardClickLike = () => {
-    setLikeStatusMutation.mutate(currentBoardId);
-  }
 
   // * 게시글 찜하기 useMutation
   const setLikeStatusMutation = useMutation(setLikeStatus, {
