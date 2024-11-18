@@ -18,8 +18,8 @@ import ReserveNotice from './ReserveNotice';
 import Loading from './statusPage/Loading';
 import Error from './statusPage/Error';
 import NullAlert from './statusPage/NullAlert';
-
+import ReservationList from './ReservationList'
 
 export { Login, SignUp, Intro, MyPage, Main, Search, BoardList, BoardListShop, BoardDetail, BoardWrite, LocationSetting, 
-        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice, InquiryPage };
+        Loading, Error, NullAlert, SignUpChoice, SignUpCustomer, Settings, MyPageCustomer, ReserveNotice, InquiryPage, ReservationList };
 

@@ -9,7 +9,6 @@ import Loading from '../statusPage/Loading';
 import Error from '../statusPage/Error';
 import NullAlert from '../statusPage/NullAlert';
 import { SlSettings } from "react-icons/sl";
-import ReservationList from '../ReservationList';
 
 function MyPage() {
     const navigate = useNavigate();
@@ -147,20 +146,7 @@ function MyPage() {
                         {dataMyLikeBoard === undefined || dataMyLikeBoard.length === 0 ? (
                             <NullAlert alertMessage='손님이 예약한 상품이 없어요'/>
                         ) : (
-                            dataMyLikeBoard.map((item) => (
-                                <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
-                                    <ItemArea>
-                                        <ImgBox>
-                                            <img src={item.image} alt={item.title} />
-                                        </ImgBox>
-                                        <Info>
-                                            <h2>{item.title}</h2>
-                                            <p>{item.address}</p>
-                                            <b>{item.price}</b>
-                                        </Info>
-                                    </ItemArea>
-                                </ItemBox>
-                            ))
+                            <ReservationList/>
                         )}
                     </Contents>
                 </TabSlideArea>

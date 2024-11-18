@@ -4,12 +4,17 @@ import { styled } from 'styled-components';
 import { SlArrowLeft } from "react-icons/sl";
 import { Input, CommonButton, Flx, IntroLayout } from '../../components/element';
 import { useMutation } from 'react-query';
-import { getAddressChk, getIdChk, userSignup } from '../../api/users';  
+import { getIdChk, userSignup } from '../../api/users';  
+import DaumPostcode from 'react-daum-postcode';
 
 function SignUp() {
     // 회원가입에서 필요한 Hook연결하기
     const navigate = useNavigate();
     const mutate = useMutation();
+
+    const completeHandler = data => {
+        console.log(data);
+      };
 
     //Input창 저장용 state
     const [input, setInput] = useState({  // 사장님계정에 맞게 입력란 수정
@@ -17,12 +22,12 @@ function SignUp() {
         password:'',
         pwConfirm:'',
         nickname:'',   // 닉네임=상점명 으로 생각하자
-        address:{
+        /*address:{
             region1depthName:'',
             region2depthName:'',
             region3depthName:'',
             region4depthName:'',
-        },
+        },*/
         time:'',   // 손님유저랑 유일하게 다르게 입력받는 항목
         userType: 'owner',
     });
@@ -30,7 +35,7 @@ function SignUp() {
     // Input창 작성용 onChangehandler, 입력 필드에 입력한 값을 위의 state에 저장하는 함수
     const onChangeInputHandler = (e) => {
       const { id, value } = e.target;
-      if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName" || id === "region4depthName") {
+      /*if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName" || id === "region4depthName") {
           setInput({
             ...input,
             address: {
@@ -38,19 +43,19 @@ function SignUp() {
               [id]: value,
             },
           });
-        } else {
+        } else {*/
           setInput({
             ...input,
             [id]: value,
           });
         }
-  };
-    // 주소 유효성 확인 핸들러
+  
+    /*// 주소 유효성 확인 핸들러
     const onAddressChkHandler = (e,region1depthName,region2depthName,region3depthName, region4depthName) => {
         e.preventDefault();
         // console.log(region1depthName,region2depthName,region3depthName);
         getAddressChk(region1depthName,region2depthName,region3depthName,region4depthName);
-    }
+    }*/
 
     const onIdChkHandler = (e,userId) => {
         e.preventDefault();
@@ -64,12 +69,12 @@ function SignUp() {
             userId:input.userId,
             password:input.password,
             nickname:input.nickname,
-            address:{
+            /*address:{
                 region1depthName:input.address.region1depthName,
                 region2depthName:input.address.region2depthName,
                 region3depthName:input.address.region3depthName,
                 region4depthName:input.address.region4depthName
-            },
+            },*/
             time:input.time
         };
         const userType = 'owner'; // 사장님 유저 타입으로 설정
@@ -160,7 +165,7 @@ function SignUp() {
                         onChange={onChangeInputHandler}/>
                 </Flx>
 
-                <Flx>
+                {/*<Flx>
                     <label htmlFor='address' style={{width:"65px"}} >주소</label>
                     <Input 
                         type="text" 
@@ -184,7 +189,7 @@ function SignUp() {
                         placeholder='ex) 필동' 
                         onChange={onChangeInputHandler}/>
                 </Flx> 
-
+                
                 
                     <Input
                         type="text" 
@@ -193,7 +198,13 @@ function SignUp() {
                         style={{width:"62%",marginBottom:"15px",marginLeft:"60px"}} 
                         placeholder='ex) 동국대 정보문화관Q202' 
                         onChange={onChangeInputHandler}/>
-                
+                */}
+                <div onClick={modalstate}>주소검색</div>
+                {open === true && (
+                <div>
+                <DaumPostcode onComplete={completeHandler} />
+                </div>
+                )}
 
                 <CommonButton size="small" style={{float:"right"}} onClick={(e) => 
                   onAddressChkHandler(e,input.address.region1depthName,input.address.region2depthName,input.address.region3depthName,input.address.region4depthName)}>주소 확인</CommonButton>
@@ -253,5 +264,4 @@ const StyledInput = styled(Input)`
   width:calc(100% - 168px) !important;
   margin-right:8px;
 `;
-
 
