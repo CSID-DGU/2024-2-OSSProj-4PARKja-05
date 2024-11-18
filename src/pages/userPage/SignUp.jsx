@@ -4,7 +4,8 @@ import { styled } from 'styled-components';
 import { SlArrowLeft } from "react-icons/sl";
 import { Input, CommonButton, Flx, IntroLayout } from '../../components/element';
 import { useMutation } from 'react-query';
-import { getAddressChk, getIdChk, userSignup } from '../../api/users';  
+import { getAddressChk, getIdChk, userSignup } from '../../api/users';
+import DaumPostcode from 'react-daum-postcode';
 
 function SignUp() {
     // 회원가입에서 필요한 Hook연결하기
@@ -161,30 +162,54 @@ function SignUp() {
                 </Flx>
 
                 <Flx>
-                    <label htmlFor='address' style={{width:"65px"}} >주소</label>
+                    <label htmlFor='address' style={{width:"65px"}}>주소</label>
+    
+                    {/* 1depth 주소 */}
                     <Input 
                         type="text" 
-                        value={input?.address?.region1depthName} 
+                        value={input?.address?.region1depthName || ''} 
                         id="region1depthName"
-                        style={{width:"30%",marginBottom:"15px"}} 
+                        style={{width:"30%", marginBottom:"15px"}} 
                         placeholder='ex) 서울특별시' 
-                        onChange={onChangeInputHandler}/>
+                        onChange={onChangeInputHandler}
+                    />
+    
+                    {/* 2depth 주소 */}
                     <Input 
                         type="text" 
-                        value={input?.address?.region2depthName} 
-                        id='region2depthName' 
-                        style={{width:"30%",marginBottom:"15px"}} 
+                        value={input?.address?.region2depthName || ''} 
+                        id="region2depthName" 
+                        style={{width:"30%", marginBottom:"15px"}} 
                         placeholder='ex) 중구' 
-                        onChange={onChangeInputHandler}/>
+                        onChange={onChangeInputHandler}
+                    />
+    
+                    {/* 3depth 주소 */}
                     <Input 
                         type="text" 
-                        value={input?.address?.region3depthName} 
-                        id='region3depthName'
-                        style={{width:"30%",marginBottom:"15px"}} 
+                        value={input?.address?.region3depthName || ''} 
+                        id="region3depthName"
+                        style={{width:"30%", marginBottom:"15px"}} 
                         placeholder='ex) 필동' 
-                        onChange={onChangeInputHandler}/>
-                </Flx> 
+                        onChange={onChangeInputHandler}
+                    />
+    
+                    {/* 주소 검색 버튼 */}
+                    <div onClick={modalstate} style={{cursor: "pointer", marginLeft: "10px", color: "#007BFF"}}>
+                        주소검색
+                    </div>
 
+                    {/* DaumPostcode 모달 */}
+                    {open === true && (
+                        <div style={{position: "absolute", zIndex: "1000", backgroundColor: "white", padding: "10px", border: "1px solid #ddd"}}>
+                            <DaumPostcode 
+                                onComplete={completeHandler} 
+                                autoClose 
+                                style={{width: "400px", height: "500px"}}
+                            />
+                        </div>
+                    )}
+                </Flx>
                 
                     <Input
                         type="text" 

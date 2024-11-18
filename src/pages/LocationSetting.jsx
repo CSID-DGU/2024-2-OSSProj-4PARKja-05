@@ -119,6 +119,8 @@ function LocationSetting() {
         <MapArea>
             <div id='map' style={{width:"100%",height:"500px"}}></div>
         </MapArea>
+
+        
         <MapController>
             <h2 >범위 설정</h2>
             <p className='mytown'>{sessionStorage.getItem("userAddress3depth")}</p>
