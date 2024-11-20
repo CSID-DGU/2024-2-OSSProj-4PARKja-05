@@ -17,16 +17,19 @@ export const submitBoard = (boardFormData) => {
 }
 
 // * 게시글 리스트 조회
-export const getBoards = (setPage) => {
-  return instance.get(`/api/board?page=${setPage.page}&size=${setPage.size}&sort=${setPage.sort[0]}`)
-  .then((response) => {
-    console.log('axois', response.data.data.responseDtos)
-    return response.data.data.responseDtos;
-  })
-  .catch((error) => {
-    console.error(error.response.data);
-  })
-}
+export const getBoards = (setPage, categoryId = null, searchTerm = '') => {
+  const categoryParam = categoryId ? `&categoryId=${categoryId}` : '';
+  const searchParam = searchTerm ? `&searchTerm=${encodeURIComponent(searchTerm)}` : '';
+  const url = `/api/board?page=${setPage.page}&size=${setPage.size}&sort=${setPage.sort[0]}${categoryParam}${searchParam}`;
+  
+  return axios.get(url)
+      .then((response) => {
+          return response.data.data.responseDtos;
+      })
+      .catch((error) => {
+          console.error(error.response.data);
+      });
+};
 
 // * 게시글 상세 조회
 export const getBoardDetail = (currentBoardId) => {

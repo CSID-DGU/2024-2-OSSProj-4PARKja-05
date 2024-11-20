@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { SlArrowLeft } from "react-icons/sl";
@@ -6,14 +6,18 @@ import { Input, CommonButton, Flx, IntroLayout } from '../../components/element'
 import { useMutation } from 'react-query';
 import { getIdChk, userSignup } from '../../api/users';
 import DaumPostcode from 'react-daum-postcode';
+import { geocodeAddress } from '../../api/geocode';
 
 function SignUp() {
-    // 회원가입에서 필요한 Hook연결하기
     const navigate = useNavigate();
     const mutate = useMutation();
 
     // modalstate 상태 관리
     const [open, setOpen] = useState(false);
+
+    // 선택된 주소를 저장하는 state
+    const [address, setAddress] = useState('');
+    const [coordinates, setCoordinates] = useState({ lat: '', lng: '' });
 
     // 모달 상태를 토글하는 함수
     const modalstate = () => {
@@ -21,202 +25,160 @@ function SignUp() {
     };
 
     // 주소 검색 완료 핸들러
-    const completeHandler = (data) => {
-        console.log(data); // 선택된 주소 데이터
-        setOpen(false); // 주소 선택 후 모달 닫기
+    const completeHandler = async (data) => {
+        setAddress(data.address);
+        const coords = await geocodeAddress(data.address);
+        if (coords) {
+            setCoordinates({ lat: coords.lat, lng: coords.lng });
+        }
+        setOpen(false);
     };
 
     //Input창 저장용 state
-    const [input, setInput] = useState({  // 사장님계정에 맞게 입력란 수정
-        userId:'',
-        password:'',
-        pwConfirm:'',
-        nickname:'',   // 닉네임=상점명 으로 생각하자
-        /*address:{
-            region1depthName:'',
-            region2depthName:'',
-            region3depthName:'',
-            region4depthName:'',
-        },*/
-        time:'',   // 손님유저랑 유일하게 다르게 입력받는 항목
+    const [input, setInput] = useState({
+        userId: '',
+        password: '',
+        pwConfirm: '',
+        nickname: '',
+        time: '',
         userType: 'owner',
     });
 
-    // Input창 작성용 onChangehandler, 입력 필드에 입력한 값을 위의 state에 저장하는 함수
+    // Input창 작성용 onChangehandler
     const onChangeInputHandler = (e) => {
-      const { id, value } = e.target;
-      /*if (id === "region1depthName" || id === "region2depthName" || id === "region3depthName" || id === "region4depthName") {
-          setInput({
-            ...input,
-            address: {
-              ...input.address,
-              [id]: value,
-            },
-          });
-        } else {*/
-          setInput({
+        const { id, value } = e.target;
+        setInput({
             ...input,
             [id]: value,
-          });
-        }
-  
-    /*// 주소 유효성 확인 핸들러
-    const onAddressChkHandler = (e,region1depthName,region2depthName,region3depthName, region4depthName) => {
-        e.preventDefault();
-        // console.log(region1depthName,region2depthName,region3depthName);
-        getAddressChk(region1depthName,region2depthName,region3depthName,region4depthName);
-    }*/
-
-    const onIdChkHandler = (e,userId) => {
-        e.preventDefault();
-        getIdChk(userId);
-    }
-
-    // 가입하기 버튼 클릭 이벤트핸들러, 가입하기 버튼을 눌렀을 때 호출되는 함수
-    const onSubmitJoinHandler = (e) => {
-        e.preventDefault();
-        const userInfo = {
-            userId:input.userId,
-            password:input.password,
-            nickname:input.nickname,
-            /*address:{
-                region1depthName:input.address.region1depthName,
-                region2depthName:input.address.region2depthName,
-                region3depthName:input.address.region3depthName,
-                region4depthName:input.address.region4depthName
-            },*/
-            time:input.time
-        };
-        const userType = 'owner'; // 사장님 유저 타입으로 설정
-        userSignup(userInfo, userType); // 입력된 회원 정보를 가지고 백엔드로 요청 보내기
-        navigate('/Login');   // 요청이 성공하면 로그인 페이지로 이동
+        });
     };
 
-  return (
-    <IntroLayout>
-        <Backbutton type='button' onClick={() => navigate(-1)}><SlArrowLeft /></Backbutton>
-        <h1 style={{marginTop:"40px",marginBottom:"0px"}}>회원가입</h1>
-        <StForm>
-            <div>
-                <Flx>
-                    <label htmlFor='nickname'>상점명</label>
-                    <Input 
-                    type="text" 
-                    value={input.nickname} 
-                    id='nickname' 
-                    placeholder='정확한 상점명' 
-                    onChange={onChangeInputHandler}/>
-                    {/* <CommonButton size='small' onClick={() => onSubmitJoinHandler}>중복확인</CommonButton> */}
-                    {
-                        input.nickname.length > 0 ? 
-                        null
-                        :
-                        <p className='alertText'>정확한 상점명을 입력해 주세요.</p>
-                    }
-                </Flx>
+    const onIdChkHandler = (e) => {
+        e.preventDefault();
+        getIdChk(input.userId);
+    };
 
-                <Flx>
-                    <label htmlFor='userId'>아이디</label>
-                    <StyledInput 
-                    type="text" 
-                    value={input.userId} 
-                    id='userId' 
-                    placeholder='5~10글자 사이 영문 소문자,숫자' 
-                    onChange={onChangeInputHandler}/>
-                    <CommonButton size='small' onClick={(e) => onIdChkHandler(e,input.userId)}>중복확인</CommonButton>
-                    {
-                        /^[a-z0-9]{8,15}$/.test(input.userId) ?
-                        null
-                        :
-                        <p className='alertText'>8~15글자 사이 영문 소문자,숫자를 사용하세요.</p>
-                    }
-                </Flx>
-                
-                <Flx>
-                    <label htmlFor='password'>패스워드</label>
-                    <Input 
-                    type="password" 
-                    value={input.password} 
-                    id='password' 
-                    placeholder='8~15글자 사이 영문,숫자,특수문자' 
-                    onChange={onChangeInputHandler}/>
-                    {
-                        /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,.<>?[\]\\/]{8,15}$/.test(input.password) ?
-                        null
-                        :
-                        <p className='alertText'>8~15글자 사이 영문,숫자,특수문자를 사용하세요.</p>
-                    }
-                    
-                </Flx>
+    const onSubmitJoinHandler = async (e) => {
+        e.preventDefault();
+        const userInfo = {
+            userId: input.userId,
+            password: input.password,
+            nickname: input.nickname,
+            address: address,
+            detailedAddress: input.address.region4depthName, // 상세 주소
+            time: input.time,
+            latitude: coordinates.lat,
+            longitude: coordinates.lng
+        };
+        const userType = 'owner';
+        await userSignup(userInfo, userType);
+        navigate('/Login');
+    };
 
-                <Flx>
-                    <label htmlFor='PWConfirm'>중복확인</label>
-                    <Input 
-                    type="password" 
-                    value={input.pwConfirm} 
-                    id='pwConfirm' 
-                    placeholder='비밀번호 확인을 위해 한번 더 입력해주세요' 
-                    onChange={onChangeInputHandler}/>
-                    {
-                        input.password === input.pwConfirm ?
-                        null
-                        :
-                        <p className='alertText'>비밀번호가 일치하지 않습니다.</p>
-                    }
-                </Flx>
 
-                <Flx>
-                    <label htmlFor='time'>영업시간</label>
-                    <Input 
-                        type="text" 
-                        value={input.time} 
-                        id="time" 
-                        placeholder='ex) 매일 10:00 - 22:00' 
-                        onChange={onChangeInputHandler}/>
-                </Flx>
-
-                <Flx>
-                    <label htmlFor='address' style={{width:"65px"}}>주소</label>
-    
-                    {/* 주소 검색 버튼 */}
-                    <div onClick={modalstate} style={{cursor: "pointer", marginLeft: "10px", color: "#007BFF"}}>
-                        주소검색
-                    </div>
-
-                    {/* DaumPostcode 모달 */}
-                    {open === true && (
-                        <div style={{position: "absolute", zIndex: "1000", backgroundColor: "white", padding: "10px", border: "1px solid #ddd"}}>
-                            <DaumPostcode 
-                                onComplete={completeHandler} 
-                                autoClose 
-                                style={{width: "400px", height: "500px"}}
-                            />
-                        </div>
-                    )}
-                </Flx>
-                                  
-                <div onClick={modalstate}>주소검색</div>
-                {open === true && (
+    return (
+        <IntroLayout>
+            <Backbutton type='button' onClick={() => navigate(-1)}><SlArrowLeft /></Backbutton>
+            <h1 style={{marginTop:"40px",marginBottom:"0px"}}>회원가입</h1>
+            <StForm>
                 <div>
-                <DaumPostcode onComplete={completeHandler} />
-                </div>
-                )}
+                    <Flx>
+                        <label htmlFor='nickname'>상점명</label>
+                        <Input 
+                            type="text" 
+                            value={input.nickname} 
+                            id='nickname' 
+                            placeholder='정확한 상점명' 
+                            onChange={onChangeInputHandler}
+                        />
+                        {input.nickname.length > 0 ? null : <p className='alertText'>정확한 상점명을 입력해 주세요.</p>}
+                    </Flx>
 
-                <CommonButton size="small" style={{float:"right"}} onClick={(e) => 
-                  onAddressChkHandler(e,input.address.region1depthName,input.address.region2depthName,input.address.region3depthName,input.address.region4depthName)}>주소 확인</CommonButton>
-            </div>
-            <Input
+                    <Flx>
+                        <label htmlFor='userId'>아이디</label>
+                        <StyledInput 
+                            type="text" 
+                            value={input.userId} 
+                            id='userId' 
+                            placeholder='5~10글자 사이 영문 소문자,숫자' 
+                            onChange={onChangeInputHandler}
+                        />
+                        <CommonButton size='small' onClick={(e) => onIdChkHandler(e, input.userId)}>중복확인</CommonButton>
+                        {
+                            /^[a-z0-9]{8,15}$/.test(input.userId) ? null : 
+                            <p className='alertText'>8~15글자 사이 영문 소문자,숫자를 사용하세요.</p>
+                        }
+                    </Flx>
+                    
+                    <Flx>
+                        <label htmlFor='password'>패스워드</label>
+                        <Input 
+                            type="password" 
+                            value={input.password} 
+                            id='password' 
+                            placeholder='8~15글자 사이 영문,숫자,특수문자' 
+                            onChange={onChangeInputHandler}
+                        />
+                        {
+                            /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,.<>?[\]\\/]{8,15}$/.test(input.password) ? null : 
+                            <p className='alertText'>8~15글자 사이 영문,숫자,특수문자를 사용하세요.</p>
+                        }
+                    </Flx>
+
+                    <Flx>
+                        <label htmlFor='pwConfirm'>중복확인</label>
+                        <Input 
+                            type="password" 
+                            value={input.pwConfirm} 
+                            id='pwConfirm' 
+                            placeholder='비밀번호 확인을 위해 한번 더 입력해주세요' 
+                            onChange={onChangeInputHandler}
+                        />
+                        {
+                            input.password === input.pwConfirm ? null : 
+                            <p className='alertText'>비밀번호가 일치하지 않습니다.</p>
+                        }
+                    </Flx>
+
+                    <Flx>
+                        <label htmlFor='time'>영업시간</label>
+                        <Input 
+                            type="text" 
+                            value={input.time} 
+                            id="time" 
+                            placeholder='ex) 매일 10:00 - 22:00' 
+                            onChange={onChangeInputHandler}
+                        />
+                    </Flx>
+
+                    <Flx>
+                        <label htmlFor='address' style={{width:"65px"}}>주소</label>
+                        <div onClick={modalstate} style={{cursor: "pointer", marginLeft: "10px", color: "#007BFF"}}>
+                            주소검색
+                        </div>
+                        {address && <p>{address}</p>}
+                        {open && (
+                            <div style={{position: "absolute", zIndex: "1000", backgroundColor: "white", padding: "10px", border: "1px solid #ddd"}}>
+                                <DaumPostcode 
+                                    onComplete={completeHandler} 
+                                    autoClose 
+                                    style={{width: "400px", height: "500px"}}
+                                />
+                            </div>
+                        )}
+                    </Flx>
+                    <Input
                         type="text" 
                         value={input?.address?.region4depthName} 
                         id='region4depthName'
                         style={{width:"62%",marginBottom:"15px",marginLeft:"60px"}} 
                         placeholder='ex) 동국대 정보문화관Q202' 
                         onChange={onChangeInputHandler}/>
-            <CommonButton onClick={(e) => 
-              onSubmitJoinHandler(e)} size='large'>가입하기</CommonButton>
-        </StForm>
-    </IntroLayout>
-  )
+                </div>
+                <CommonButton onClick={onSubmitJoinHandler} size='large'>가입하기</CommonButton>
+            </StForm>
+        </IntroLayout>
+    );
 }
 
 export default SignUp;
@@ -229,7 +191,7 @@ const Backbutton = styled.button`
     background-color:transparent;
     font-size:22px;
     color:#777;
-`
+`;
 const StForm = styled.form`
     display:flex;
     flex-direction:column;
@@ -261,10 +223,9 @@ const StForm = styled.form`
         width:calc(100% - 65px);
         margin-bottom:35px;
     }
-`
+`;
 const StyledInput = styled(Input)`
   display: inline-block;
   width:calc(100% - 168px) !important;
   margin-right:8px;
 `;
-

@@ -31,22 +31,29 @@ function BoardList() {
     { id: 5, name: '기타', image: etc },
   ];
 
-  // 게시글 리스트 조회
-  const getBoardList = () => {
+   // 게시글 리스트 조회 함수, categoryId를 인수로 받음
+   const getBoardList = (categoryId = null) => {
     const setPage = {
       page: 0,
       size: 100,
       sort: ["createdAt,DESC"], 
     };
-    getBoardListMutation.mutate(setPage);
+    getBoardListMutation.mutate({ setPage, categoryId });
   };
 
   // 게시글 리스트 조회 useMutation
-  const getBoardListMutation = useMutation(getBoards, {
-    onSuccess: (response) => {
-      setBoardData(response);
-    },
-  });
+  const getBoardListMutation = useMutation(
+    ({ setPage, categoryId }) => getBoards(setPage, categoryId), // categoryId 전달
+    {
+      onSuccess: (response) => {
+        setBoardData(response);
+      },
+    }
+  );
+
+useEffect(() => {
+  getBoardList(); // 처음 렌더링 시 모든 게시글 조회
+}, []);
 
   // 상세 페이지로 이동
   const setPageChange = (boardId) => {
@@ -56,9 +63,11 @@ function BoardList() {
   // 카테고리 선택 핸들러
   const handleCategorySelect = (categoryId) => {
     setSelectedCategory((prevCategory) =>
-      prevCategory === categoryId ? null : categoryId
+        prevCategory === categoryId ? null : categoryId
     );
-  };
+    getBoardList(categoryId); // 선택한 카테고리 ID로 게시글 조회
+};
+
 
   // 선택된 카테고리에 따라 필터링된 게시글 목록
   const filteredBoardData = selectedCategory

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { Layout, Image, StatusButton } from '../components/element';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-//import userDefaultImg from '../assets/user_default_image.jpg';
+// import userDefaultImg from '../assets/user_default_image.jpg';
 import { useQuery, useMutation } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getBoardDetail, setLikeStatus, addToPurchaseHistory } from '../api/boards';
@@ -66,16 +66,19 @@ function BoardDetail() {
           />
           <UserDiv>
             <UserInfoDiv>
-              {/*<Image
+              {/* <Image
                 width={'40px'}
                 height={'40px'}
                 borderradius={'50%'}
                 src={userDefaultImg}
                 alt={'유저 프로필 이미지'}
-              />*/}
+              /> */}
               <div>
                 <DetailH2>{data.nickName}</DetailH2>
-                <DetailH3>{data.address}</DetailH3>
+                {/* 기본 주소와 상세 주소를 함께 표시 */}
+                <DetailH3>
+                  {data.address} {data.region4depthName}
+                </DetailH3>
               </div>
             </UserInfoDiv>
           </UserDiv>
@@ -102,6 +105,7 @@ function BoardDetail() {
 }
 
 export default BoardDetail;
+
 
 const ContentSection = styled.section`
   margin-top: 20px;
