@@ -145,3 +145,16 @@ export const addToPurchaseHistory = (boardId) => {
       console.error(error.response.data);
     });
 };
+
+// * 상점별 게시물 조회
+export const getBoardsByShop = (shopName) => {
+  return instance
+    .get(`/api/board/shop?shopName=${encodeURIComponent(shopName)}`)
+    .then((response) => {
+      return response.data.data; // 데이터 구조에 따라 수정 필요
+    })
+    .catch((error) => {
+      console.error('상점별 게시글 조회 에러:', error.response.data);
+      throw error;
+    });
+};

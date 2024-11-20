@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import { createGlobalStyle, styled } from 'styled-components';
@@ -9,6 +9,7 @@ import Loading from '../statusPage/Loading';
 import Error from '../statusPage/Error';
 import NullAlert from '../statusPage/NullAlert';
 import { SlSettings } from "react-icons/sl";
+import ReservationList from "../ReservationList";
 
 function MyPage() {
     const navigate = useNavigate();
@@ -37,7 +38,7 @@ function MyPage() {
     // 게시물 불러오기
     const access_token = sessionStorage.getItem('access_token');
 
-    const { isLoading: isLoadingMyBoard, isError: isErrorMyBoard, data: dataMyBoard, refetch: refetchMyLikeBoard } = useQuery("getMyBoard", () => getMyBoard(access_token));/*
+    const { isLoading, isError, data, refetch } = useQuery("getMyBoard", () => getMyBoard(access_token));/*
     const { isLoading: isLoadingMyLikeBoard, isError: isErrorMyLikeBoard, data: dataMyLikeBoard, refetch: refetchMyBoard } = useQuery("getMylikeBoard", () => getMylikeBoard(access_token));*/
           // 여기서 dataMyLikeBoard도 가져오기 때문에..
           // localhost:3000/MyPage에선, '/api/mypage/myBoard'랑 '/api/like' 둘다 연결이 된 상태여야함
@@ -45,10 +46,10 @@ function MyPage() {
 
 
     // 상품 상태 변경 시 mutation 발생
-    const soldoutMutation = useMutation(putBoardSoldout,{
+    const reservationMutation = useMutation(putBoardReservation,{
         onSuccess: (response) => {
             queryClient.invalidateQueries("getMyBoard");
-            queryClient.invalidateQueries("getMyLikeBoard");
+            // queryClient.invalidateQueries("getMyLikeBoard");
             alert('상품 예약이 완료되었습니다.')
             console.log('response',response);
         }
@@ -58,31 +59,25 @@ function MyPage() {
     const deleteBoardMutation = useMutation(deleteBoard,{
         onSuccess: (response) => {
             queryClient.invalidateQueries("getMyBoard");
-            queryClient.invalidateQueries("getMyLikeBoard");
+            // queryClient.invalidateQueries("getMyLikeBoard");
             alert('상품 삭제가 완료되었습니다.')
             console.log('response',response);
         }
     })
 
-    if(isLoadingMyBoard) {
+    if (isLoading) {
         return <Loading />
     }
-    if(isErrorMyBoard) {
+    if (isError) {
         return <Error />
     }
-   /* if(isLoadingMyLikeBoard) {
-        return <Loading />
-    }
-    if(isErrorMyLikeBoard) {
-        return <Error />
-    }*/
 
     // 상세페이지 이동
     const goDetail = (boardId, event) => {
         navigate(`/BoardDetail/${boardId}`);
         event.stopPropagation();
     };
-
+    
     // 상품 게시글 삭제
     const BoardDelete = (event, boardId) => {
         deleteBoardMutation.mutate(boardId);
@@ -90,8 +85,8 @@ function MyPage() {
     };
 
     // 상품 거래완료 처리
-    const BoardSoldout = (event, boardId) => {
-        soldoutMutation.mutate(boardId);
+    const BoardReservation = (event, boardId) => {
+        reservationMutation.mutate(boardId);
         event.stopPropagation();
     };
 
@@ -101,8 +96,9 @@ function MyPage() {
         navigate('/')
     };
 
-    console.log('dataMyBoard',dataMyBoard);
-    //console.log('dataMyLikeBoard',dataMyLikeBoard);
+    console.log('data',data);
+    // console.log('dataMyLikeBoard',dataMyLikeBoard);
+
   return (
     <Layout>
         <Setbutton type='button' onClick={() => navigate('/Settings')}><SlSettings /></Setbutton>
@@ -114,36 +110,47 @@ function MyPage() {
         <TabContainer>
             <TabMenuArea>
                 <TabMenu id="sale" className='tabMenu checked' onClick={tabMenuHandler}>판매중</TabMenu>
-                <TabMenu id="soldout" className='tabMenu' onClick={tabMenuHandler}>예약내역</TabMenu>
+                <TabMenu id="reservation" className='tabMenu' onClick={tabMenuHandler}>예약내역</TabMenu>
                 <TabNav className='tabNav'/>
             </TabMenuArea>
             <TabContentsArea>
                 <TabSlideArea className='tabContents'>
                     <Contents>
                         {/* 판매중 영역 */}
-                        {dataMyBoard === undefined || dataMyBoard === null ? (
-                        <NullAlert alertMessage='판매중인 상품이 없어요'/>
-                        ) : (dataMyBoard.filter((item) => item.status === true).length === 0 ?
-                        <NullAlert alertMessage='판매중인 상품이 없어요'/> :
-                        dataMyBoard.filter((item) => item.status === true).map((item) => (
-                            <ItemBox key={item.id} onClick={(event) => goDetail(item.id, event)}>
-                            <ItemArea>
-                                <ImgBox>
-                                <img src={`http://localhost:8001/${item.image}`} alt={item.title} />
-                                </ImgBox>
-                                <Info>
-                                <h2>{item.title}</h2>
-                                <p>{item.address}</p>
-                                <b>{item.price}</b>
-                                </Info>
-                            </ItemArea>
-                            </ItemBox>
+                        {data === undefined || data === null ? (
+                            <NullAlert alertMessage="판매중인 상품이 없어요" />
+                        ) : data.filter((item) => item.status === true).length === 0 ? (
+                            <NullAlert alertMessage="판매중인 상품이 없어요" />
+                        ) : (
+                            data
+                            .filter((item) => item.status === true)
+                            .map((board) => (
+                                <ItemBox key={board.id} onClick={() => goDetail(board.id)}>
+                                <ItemArea>
+                                    <ImgBox>
+                                    <img
+                                        src={`http://localhost:8001${board.image}`}
+                                        alt="상품 이미지"
+                                    />
+                                    </ImgBox>
+                                    <Info>
+                                    <h2>{board.title}</h2>
+                                    <p>{board.nickname}</p>
+                                    <b>
+                                        {Number(
+                                        board.original_price * (1 - board.discount_rate / 100)
+                                        ).toLocaleString()}
+                                        원
+                                    </b>
+                                    </Info>
+                                </ItemArea>
+                                </ItemBox>
                             ))
                         )}
                     </Contents>
                     <Contents>
                         {/* 예약내역 영역 */}
-                        {dataMyBoard === undefined || dataMyBoard.length === 0 ? (
+                        {data === undefined || data.length === 0 ? (
                             <NullAlert alertMessage='손님이 예약한 상품이 없어요'/>
                         ) : (
                             <ReservationList />
