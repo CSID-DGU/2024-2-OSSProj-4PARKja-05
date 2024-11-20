@@ -4,6 +4,9 @@ import { Layout, Image } from '../components/element';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getReservations } from '../api/reservations';
+import Loading from './statusPage/Loading';
+import Error from './statusPage/Error';
+
 
 function ReservationList() {
   const navigate = useNavigate();
@@ -17,11 +20,11 @@ function ReservationList() {
   });
 
   if (isLoading) {
-    return <div>로딩 중...</div>;
+    return <Loading />
   }
-
+  
   if (isError) {
-    return <div>예약 내역을 불러오는 데 실패했습니다.</div>;
+      return <Error />
   }
 
   // 예약 상세 페이지로 이동

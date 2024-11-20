@@ -2,37 +2,35 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Layout, Image, StatusButton } from '../components/element';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { getBoards } from '../api/boards';
+import { getBoardsByShop } from '../api/boards';
+import Loading from './statusPage/Loading';
+import Error from './statusPage/Error';
 
 function BoardListShop() {
   const [boardData, setBoardData] = useState([]);
   const { shopName } = useParams(); // URL 파라미터로 상점명 가져오기
   const navigate = useNavigate();
 
-  // 페이지가 마운트될 때 게시글 리스트를 조회하도록 설정
-  useEffect(() => {
-    getBoardList();
-  }, [shopName]); // shopName이 변경될 때마다 다시 조회
+  // 상점별 게시글 리스트 조회
+  const { data, isLoading, isError } = useQuery(
+    ['getBoardsByShop', shopName],
+    () => getBoardsByShop({ page: 0, size: 100, sort: ["createdAt,DESC"], shopName }),
+    {
+      onSuccess: (response) => {
+        setBoardData(response); // 응답 데이터 설정
+      },
+    }
+  );
 
-  // 게시글 리스트 조회
-  const getBoardList = () => {
-    const setPage = {
-      page: 0,
-      size: 100,
-      sort: ["createdAt,DESC"],
-    };
-    getBoardListMutation.mutate(setPage);
-  };
-
-  // 게시글 리스트 조회 useMutation
-  const getBoardListMutation = useMutation(getBoards, {
-    onSuccess: (response) => {
-      // 상점명(shopName)과 일치하는 게시글만 필터링
-      const filteredData = response.filter((board) => board.nickname === shopName);
-      setBoardData(filteredData);
-    },
-  });
+  if (isLoading) {
+    return <Loading />
+  }
+  
+  if (isError) {
+      return <Error />
+  }
 
   // 상세 페이지로 이동
   const setPageChange = (boardId) => {
@@ -51,7 +49,7 @@ function BoardListShop() {
               width="130px"
               height="130px"
               borderradius="10px"
-              src={board.image}
+              src={`http://localhost:8001${board.image}`}
               alt="상품 이미지"
             />
             <ListInfoDiv>
@@ -60,8 +58,8 @@ function BoardListShop() {
                 <span>{board.nickname}</span> {/* 상점명(사장님의 닉네임) */}
               </ListDetailH3>
               <ListPriceH2>
-                {board.status && <StatusButton color="black">거래완료</StatusButton>}
-                {Number(board.price).toLocaleString()}원
+                {board.status && <StatusButton color="black">예약완료</StatusButton>}
+                {Number(board.original_price * (1 - board.discount_rate / 100)).toLocaleString()}원
               </ListPriceH2>
             </ListInfoDiv>
           </ListOneDiv>
