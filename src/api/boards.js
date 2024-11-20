@@ -114,11 +114,11 @@ export const getDetailBoard = ({boardId, access_token}) => {
     })
 };
 
-// 마이페이지 : 거래 완료
-export const putBoardSoldout = (boardId) => {
+// 마이페이지 : 예약 완료
+export const putBoardReservation = (boardId) => {
     return instance.put(`/api/board/sell/${boardId}`)
     .then((response) => {
-        console.log('거래완료 요청 실행');
+        console.log('예약완료 요청 실행');
         return response;
     })
     .catch((error) => {
@@ -150,9 +150,9 @@ export const addToPurchaseHistory = (boardId) => {
 };
 
 // * 상점별 게시물 조회
-export const getBoardsByShop = (shopName) => {
+export const getBoardsByShop = (searchTerm) => {
   return instance
-    .get(`/api/board/shop?shopName=${encodeURIComponent(shopName)}`)
+    .get(`/api/board/shop?searchTerm=${encodeURIComponent(searchTerm)}`)
     .then((response) => {
       return response.data.data; // 데이터 구조에 따라 수정 필요
     })

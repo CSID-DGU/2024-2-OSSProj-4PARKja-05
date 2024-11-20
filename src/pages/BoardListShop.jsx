@@ -10,13 +10,13 @@ import Error from './statusPage/Error';
 
 function BoardListShop() {
   const [boardData, setBoardData] = useState([]);
-  const { shopName } = useParams(); // URL 파라미터로 상점명 가져오기
+  const { searchTerm } = useParams(); // URL 파라미터로 상점명 가져오기
   const navigate = useNavigate();
 
   // 상점별 게시글 리스트 조회
   const { data, isLoading, isError } = useQuery(
-    ['getBoardsByShop', shopName],
-    () => getBoardsByShop({ page: 0, size: 100, sort: ["createdAt,DESC"], shopName }),
+    ['getBoardsByShop', searchTerm],
+    () => getBoardsByShop({ page: 0, size: 100, sort: ["createdAt,DESC"], searchTerm }),
     {
       onSuccess: (response) => {
         setBoardData(response); // 응답 데이터 설정
@@ -39,7 +39,7 @@ function BoardListShop() {
 
   return (
     <Layout>
-      <Title>{shopName}의 상품 목록</Title>
+      <Title>{searchTerm}의 상품 목록</Title>
 
       {/* 게시물 리스트 섹션 */}
       <ListSection>

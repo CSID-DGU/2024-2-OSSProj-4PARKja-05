@@ -2,7 +2,7 @@ import React from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import { createGlobalStyle, styled } from 'styled-components';
-import { deleteBoard, getDetailBoard, getMyBoard, getMylikeBoard, putBoardSoldout } from '../../api/boards';
+import { deleteBoard, getDetailBoard, getMyBoard, getMylikeBoard, putBoardReservation } from '../../api/boards';
 import { userLogout } from '../../api/users';
 import { CommonButton, Layout } from '../../components/element';
 import Loading from '../statusPage/Loading';
