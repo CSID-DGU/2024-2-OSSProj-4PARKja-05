@@ -263,7 +263,7 @@ const ReserveButton = styled.button`
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background-color: #007BFF;
+  background-color: #4caf50;
   border: none;
   border-radius: 5px;
   cursor: pointer;
