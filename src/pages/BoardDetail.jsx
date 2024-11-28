@@ -46,6 +46,10 @@ function BoardDetail() {
       setAlertMessage(response);
       setIsModalOpen(true);
       refetch(); // 상태 재조회
+      navigate('/ReserveNotice');  // 추가
+    },
+    onError: () => {  // 추가
+      alert('예약 상태 변경에 실패했습니다. 다시 시도해주세요.');
     },
   });
   
@@ -59,6 +63,24 @@ function BoardDetail() {
   const onReserve = () => {
     togglReservationMutation.mutate();      
   };
+
+  /*
+  // * 예약하기 버튼 클릭 핸들러
+  const onReserve = () => {
+    addToPurchaseMutation.mutate(currentBoardId, {
+      onSuccess: () => {
+        alert('예약이 완료되었습니다.');
+        queryClient.invalidateQueries('getReservations'); // 예약 내역 업데이트
+        navigate('/ReserveNotice');
+      },
+      onError: () => {
+        alert('예약에 실패했습니다. 다시 시도해주세요.');
+      },
+    });
+  };
+  */
+
+
 
 
 

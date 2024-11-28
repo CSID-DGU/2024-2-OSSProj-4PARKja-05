@@ -275,7 +275,7 @@ function BoardWrite() {
               name="content"
               value={content}
               onChange={onContentChange}
-              placeholder={`"${addressSido()}" 에 올릴 게시글 내용을 작성해주세요.`}
+              placeholder={`\'소소하게\'는 안전한 식품만을 판매합니다. 식품 생산일과 판매 종료일을 정확하게 작성해주세요.`}  // 판매 시, 유의 내용 추가
             />
           </SetInfo>
         </SetBoardDiv>

@@ -154,13 +154,13 @@ const openDaumPostcode = () => {
                             type="text"
                             value={input.nickname}
                             id='nickname'
-                            placeholder='3~10글자 사이 영문'
+                            placeholder='3~10글자 사이 한글, 영문'
                             onChange={onChangeInputHandler}
                             required
                         />
                         {
-                            /^[a-zA-Z]{3,10}$/.test(input.nickname) ? null :
-                                <p className='alertText'>5~10글자 사이 영문을 사용하세요.</p>
+                            /^[a-zA-Z가-힣]{3,10}$/.test(input.nickname) ? null :
+                                <p className='alertText'>3~10글자 사이 한글, 영문을 사용하세요.</p>
                         }
                     </Flx>
 
@@ -214,16 +214,6 @@ const openDaumPostcode = () => {
                     </Flx>
 
                     <Flx>
-                        <label htmlFor='address.postcode'>우편번호</label>
-                        <Input
-                            type="text"
-                            value={input.address.postcode}
-                            id='address.postcode'
-                            readOnly
-                            style={{ backgroundColor: 'lightgray' }}
-                        />
-                    </Flx>
-                    <Flx>
                         <label htmlFor='address.fullAddress'>주소</label>
                         <Input
                             type="text"
@@ -234,6 +224,17 @@ const openDaumPostcode = () => {
                             required
                         />
                         <CommonButton size='small' type="button" onClick={openDaumPostcode}>주소 검색</CommonButton>
+                    </Flx>
+
+                                        <Flx>
+                        <label htmlFor='address.postcode'>우편번호</label>
+                        <Input
+                            type="text"
+                            value={input.address.postcode}
+                            id='address.postcode'
+                            readOnly
+                            style={{ backgroundColor: 'lightgray' }}
+                        />
                     </Flx>
 
                     <Flx>
