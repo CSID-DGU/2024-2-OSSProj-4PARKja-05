@@ -1,13 +1,23 @@
 import React,{ useState } from "react";
 import { styled } from 'styled-components';
-import { IntroLayout, Layout } from '../components/element';
-import AlertModal from "../components/element/AlertModal";
+import { IntroLayout } from '../components/element';
+import { useNavigate } from "react-router-dom";
 
 const ReserveNotice = () => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // 추가
+  const handleConfirm = () => {
+    setIsModalOpen(true);  // 모달 열기
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    navigate('/MyPageCustomer');  // 모달 닫고 페이지 이동
+  };
 
   return (
-    <Layout>
     <IntroLayout>
       <Title>안내사항</Title>
       <Paragraph>
@@ -50,16 +60,19 @@ const ReserveNotice = () => {
         준비하겠습니다.
       </ConfirmText>
       <ButtonContainer>
-        <ConfirmButton onClick={()=> setIsModalOpen(true)}>확인</ConfirmButton>
+        <ConfirmButton onClick={handleConfirm}>확인</ConfirmButton>
       </ButtonContainer>
 
-       
-       {isModalOpen && 
-        ( <AlertModal isModalOpen={isModalOpen}  setIsModalOpen={setIsModalOpen}   message={"공지사항을 확인 하였습니다."}  goPage={"/MyPageCustomer"}  />  )}
-
-
+       {/* 모달 */}
+       {isModalOpen && (
+        <ModalOverlay>
+          <ModalContent>
+            <p>결제가 완료되었습니다</p>
+            <button onClick={closeModal}>확인</button>
+          </ModalContent>
+        </ModalOverlay>
+      )}
     </IntroLayout>
-    </Layout>
   );
 };
 
@@ -119,4 +132,40 @@ const ConfirmButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 4px;
+`;
+
+// 모달 스타일 정의
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #5ca771;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 `;

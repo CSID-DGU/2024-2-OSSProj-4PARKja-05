@@ -233,19 +233,6 @@ const openDaumPostcode = () => {
                         />
                     </Flx>
 
-
-                    <Flx>
-                        <label htmlFor='address.postcode'>우편번호</label>
-                        <Input
-                            type="text"
-                            value={input.address.postcode}
-                            id='address.postcode'
-                            readOnly
-                            style={{ backgroundColor: 'lightgray' }}
-                        />
-                    </Flx>
-
-
                     <Flx>
                         <label htmlFor='address.fullAddress'>주소</label>
                         <Input
@@ -257,6 +244,17 @@ const openDaumPostcode = () => {
                             required
                         />
                         <CommonButton size='small' type="button" onClick={openDaumPostcode}>주소 검색</CommonButton>
+                    </Flx>
+
+                    <Flx>
+                        <label htmlFor='address.postcode'>우편번호</label>
+                        <Input
+                            type="text"
+                            value={input.address.postcode}
+                            id='address.postcode'
+                            readOnly
+                            style={{ backgroundColor: 'lightgray' }}
+                        />
                     </Flx>
 
                     <Flx>
