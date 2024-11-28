@@ -6,7 +6,6 @@ import { Input, CommonButton, Flx, IntroLayout } from '../../components/element'
 import { getIdChk, userSignup } from '../../api/users';
 
 
-
 function SignUp() {
     const navigate = useNavigate();
   
@@ -164,13 +163,13 @@ const openDaumPostcode = () => {
                             type="text"
                             value={input.nickname}
                             id='nickname'
-                            placeholder='3~10글자 사이 영문'
+                            placeholder='3~10글자 사이'
                             onChange={onChangeInputHandler}
                             required
                         />
                         {
                             /^[a-zA-Z]{3,10}$/.test(input.nickname) ? null :
-                                <p className='alertText'>5~10글자 사이 영문을 사용하세요.</p>
+                                <p className='alertText'>5~10글자 사이로 입력하세요.</p>
                         }
                     </Flx>
 

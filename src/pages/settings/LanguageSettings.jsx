@@ -78,7 +78,7 @@ const LanguageItem = styled.li`
   padding: 10px 20px;
   font-size: 16px;
   color: ${(props) => (props.isSelected ? "white" : "#333")};
-  background-color: ${(props) => (props.isSelected ? "#007bff" : "#f0f0f0")};
+  background-color: ${(props) => (props.isSelected ? "#4caf50" : "#f0f0f0")};
   border: 1px solid #ccc;
   border-radius: 20px;
   cursor: pointer;
