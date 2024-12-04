@@ -7,7 +7,7 @@
 
 | **박채현**       | **박소희**       | **박준하**       | **박지현**       |
 | :-----------------: | :-----------------: | :-----------------: | :----------------: |
-| 팀장, 백엔드    | 팀원, 프론트엔드    | 팀원, 백엔드    | 팀원, 프론트엔드  |
+| 팀장, 백엔드    |   프론트엔드    |  백엔드    |  프론트엔드  |
 | 경영정보학과  | 광고홍보학과      | 의생명공학과    | 산업시스템공학과     |
 | [@maruungIN](https://github.com/maruungIN) | [@sozzangg](https://github.com/sozzangg) | [@joonhai](https://github.com/joonhai) | [@jihyeonpark5](https://github.com/jihyeonpark5) |
 
