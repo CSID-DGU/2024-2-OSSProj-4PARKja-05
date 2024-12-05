@@ -278,7 +278,7 @@ function BoardWrite() {
               name="content"
               value={content}
               onChange={onContentChange}
-              placeholder={`유통기간을 잘 확인해 주세요.`}
+              placeholder={`\'소소하게\'는 안전한 식품만을 판매합니다. 식품 생산일과 판매 종료일을 정확하게 작성해주세요.`}
             />
           </SetInfo>
         </SetBoardDiv>
