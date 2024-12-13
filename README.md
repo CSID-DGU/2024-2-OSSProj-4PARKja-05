@@ -35,7 +35,7 @@
 ![image02](https://github.com/user-attachments/assets/a9b96d72-bd9b-4e8e-8ed9-fec93059946a)
 아래 링크를 통해 최종 결과물의 실제 구현과 주요 기능을 확인할 수 있다.
 <br>
-### [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
+### 🔗 [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
 <br>
 
 ## ⚙️ 시스템 구조
@@ -73,3 +73,8 @@
 ## 📅 프로젝트 진행 과정
 ![image03](https://github.com/user-attachments/assets/5904c923-c606-4cbe-a962-222ab112a2f7)
 ![image04](https://github.com/user-attachments/assets/49d9d5cb-dcc4-49a0-bb1b-b756a091c5d1)
+
+<br>
+
+## 📚 참고 자료
+본 프로젝트는 오픈소스 프로젝트 [Carrot Market Frontend](https://github.com/carrotclone/carrotmarket-fe)를 활용하였습니다. 해당 프로젝트를 개발한 기여자분들께 감사의 말씀을 전합니다.
