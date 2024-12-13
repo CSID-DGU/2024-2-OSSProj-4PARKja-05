@@ -38,7 +38,8 @@
 <br><br>
 
 ## ⚙️ 시스템 구조
-![image](https://github.com/CSID-DGU/2024-2-OSSProj-4PARKja-05/issues/4#issue-2738974995)
+![image01](https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04)
+
 <br><br>
 
 ## 🛠 기술 스택
