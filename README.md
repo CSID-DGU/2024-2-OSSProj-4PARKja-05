@@ -10,7 +10,7 @@
 
 # 🌱 웹 서비스 소소하게
 
-<br><br>
+<br>
 
 ## 📝 개요
 ![image](https://github.com/user-attachments/assets/2dce857a-988b-4aa2-8a86-e65bd9773dbc)
