@@ -24,14 +24,14 @@
 본 팀은 빵, 떡, 반찬 등 유통기한이 짧은 식품을 판매하는 지역 상점에서 발생하는 팔리지 않고 남은 식품 폐기물, 식품로스 문제에 집중하였다.
 동네 빵집, 떡집, 반찬가게, 마트 등 지역 상점에서 판매되지 못해 남은 음식이나, 유통기한이 임박하여 아직 먹을 수 있지만 버려지는 식품을 지역 소비자와 매칭 하는 웹 서비스 개발을 목표로 한다. 좁은 지역(동네) 단위로 서비스를 제공할 예정이며, 이를 통해 지역 소상공인과 지역 손님 간의 연결고리를 더욱 강화하고, 지역 상권에 활력을 불어넣을 수 있을 것으로 기대된다. 또한, 음식물 폐기물 처리비용 감축과 환경보호 측면에서도 긍정적 영향을 미칠 것으로 예상된다.
 
-<br><br>
+<br>
 
 ## 🎯 개발 목표
 ![image](https://github.com/user-attachments/assets/cf5737a9-e933-4faf-b1e4-7714f96d1c55)
 ![image](https://github.com/user-attachments/assets/0f591110-6155-48cd-b5f8-672088ecfa1a)
 ![image](https://github.com/user-attachments/assets/7ab4e31d-a9a8-4ecb-bf8f-93ab34758063)
 
-<br><br>
+<br>
 
 ## 🌟 제공 서비스
 본 서비스는 지역 소상공인과 소비자를 연결하여 유통기한 임박 상품을 효율적으로 판매할 수 있도록 돕는 플랫폼이다. 이를 통해 음식물 폐기물을 줄이고, 지역 경제 활성화 및 환경 보호에 기여하는 것을 목표로 한다. 서비스는 손님과 소상공인의 요구를 모두 충족시키는 사용자 친화적이고 효율적인 예약 및 게시물 관리 시스템을 제공한다.
@@ -43,12 +43,12 @@
 아래 링크를 통해 최종 결과물의 실제 구현과 주요 기능을 확인할 수 있다.
 <br>
 ### [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
-<br><br>
+<br>
 
 ## ⚙️ 시스템 구조
 ![image01](https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04)
 
-<br><br>
+<br>
 
 ## 🛠 기술 스택
 
@@ -61,7 +61,7 @@
 | **지도 API**  | <img src="https://img.shields.io/badge/KakaoMap-FFCD00?style=flat-square&logo=Kakao&logoColor=black"> <img src="https://img.shields.io/badge/NaverMap-03C75A?style=flat-square&logo=Naver&logoColor=white">                                                                                                        |
 | **협업 도구**     |<img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white">   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=flat-square&logo=google-cloud&logoColor=white">
 
-<br><br>
+<br>
 
 ## ✨ 기대 효과
 본 프로젝트의 기대효과는 다음과 같다.
@@ -74,7 +74,7 @@
 
 본 서비스는 지역 경제, 환경, 사회적 가치에 모두 긍정적인 영향을 미치며, 지속 가능한 발전을 촉진하는 다방면의 효과를 기대할 수 있다.
 
-<br><br>
+<br>
 
 ## 📅 프로젝트 진행 과정
 ![image03](https://github.com/user-attachments/assets/5904c923-c606-4cbe-a962-222ab112a2f7)
