@@ -38,7 +38,7 @@
 <br><br>
 
 ## ⚙️ 시스템 구조
-
+![image](https://github.com/CSID-DGU/2024-2-OSSProj-4PARKja-05/issues/4#issue-2738974995)
 <br><br>
 
 ## 🛠 기술 스택
