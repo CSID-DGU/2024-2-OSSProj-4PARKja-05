@@ -40,7 +40,7 @@
 ![image02](https://github.com/user-attachments/assets/a9b96d72-bd9b-4e8e-8ed9-fec93059946a)
 아래 링크를 통해 최종 결과물의 실제 구현과 주요 기능을 확인할 수 있다.
 <br>
-# [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
+#### [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
 <br><br>
 
 ## ⚙️ 시스템 구조
