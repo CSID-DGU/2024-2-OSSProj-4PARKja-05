@@ -15,7 +15,7 @@
 
 # 🌱 웹 서비스 소소하게
 
-- ## 📝 개요
+## 📝 개요
 ![image](https://github.com/user-attachments/assets/2dce857a-988b-4aa2-8a86-e65bd9773dbc)
 식품 로스: ‘식품(食品) + 로스(loss)’를 결합한 말로서 먹을 수 있는데도 불구하고 버려지는 식품을 의미.
 
@@ -24,7 +24,7 @@
 
 <br><br>
 
-- ## 🎯 개발 목표
+## 🎯 개발 목표
 ![image](https://github.com/user-attachments/assets/cf5737a9-e933-4faf-b1e4-7714f96d1c55)
 ![image](https://github.com/user-attachments/assets/0f591110-6155-48cd-b5f8-672088ecfa1a)
 ![image](https://github.com/user-attachments/assets/7ab4e31d-a9a8-4ecb-bf8f-93ab34758063)
