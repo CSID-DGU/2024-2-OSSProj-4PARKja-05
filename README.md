@@ -83,13 +83,11 @@
 
 ## ⚙️ 시스템 구조 및 설계
   - #### 시스템 구조
-![image](https://github.com/user-attachments/assets/556d8201-27ed-430e-9df4-09cfec3dabbd)
-<br>
+<img src="https://github.com/user-attachments/assets/556d8201-27ed-430e-9df4-09cfec3dabbd" width="570" height="270"/> <br>
   - #### 인포메이션 아키텍쳐
-![image01](https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04)
-<br>
+<img src="https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04" width="900" height="450"/> <br>
   - #### 데이터베이스 ERD 설계
-![image](https://github.com/user-attachments/assets/ad0c5a51-4274-4591-b134-97b0c77daaad)
+<img src="https://github.com/user-attachments/assets/ad0c5a51-4274-4591-b134-97b0c77daaad" width="345" height="500"/> <br>
 <br>
 
 
