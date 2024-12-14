@@ -18,19 +18,24 @@
 동네 빵집, 떡집, 반찬가게, 마트 등 지역 상점에서 판매되지 못해 남은 음식이나, 유통기한이 임박하여 아직 먹을 수 있지만 버려지는 식품을 지역 소비자와 매칭 하는 웹 서비스 개발을 목표로 한다. 좁은 지역(동네) 단위로 서비스를 제공할 예정이며, 이를 통해 지역 소상공인과 지역 손님 간의 연결고리를 더욱 강화하고, 지역 상권에 활력을 불어넣을 수 있을 것으로 기대된다. 또한, 음식물 폐기물 처리비용 감축과 환경보호 측면에서도 긍정적 영향을 미칠 것으로 예상된다.
 
 <br>
+<br>
 
 ## 🎯 개발 목표
 ![image](https://github.com/user-attachments/assets/cf5737a9-e933-4faf-b1e4-7714f96d1c55)
 ![image](https://github.com/user-attachments/assets/0f591110-6155-48cd-b5f8-672088ecfa1a)
+선행사례 비교 분석 <br>
 ![image](https://github.com/user-attachments/assets/7ab4e31d-a9a8-4ecb-bf8f-93ab34758063)
 
 <br>
+<br>
 
-## 상세 화면 <br>
-#### 손님 계정으로 이용 시
-<img src="https://private-user-images.githubusercontent.com/127120404/395744271-81f79adf-8869-40fd-9a28-a41b72c9a439.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MjcxLTgxZjc5YWRmLTg4NjktNDBmZC05YTI4LWE0MWI3MmM5YTQzOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NzQ3NTQ2NjA5NDY5YTcwNjJlNWJmNTA0YjY0MDM1ODEyNmI4MzlkNWNlZjczNDQyMzJjMmI5YTg3MGJkMDljJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YzILvgb3riiiNjoWx7V0pud4HV-tNGi2yJCsUYjALvM" width="250" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744300-5ead107b-f3cb-4739-89bf-6395d61ed198.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzAwLTVlYWQxMDdiLWYzY2ItNDczOS04OWJmLTYzOTVkNjFlZDE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iY2RkMTI4OGMxNjdmZGNjYWI2ZjQ5ZjIwYWEwMWE5NjE3MTJiNDBiNDI3MDk0OWE5YzliMTljM2EzNzJmNTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3fivw-ujRX7-fflYU0h4RD708DSwPwwFqGha9eRgDQ4" width="250" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744309-1c061fb5-ab8e-4ab0-8e2d-88678b7e2587.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzA5LTFjMDYxZmI1LWFiOGUtNGFiMC04ZTJkLTg4Njc4YjdlMjU4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zM2NhYTc0OGQ4M2VmMzNjMTVmNjJlMzNjYTY5ZmQxZDk5NGEyOTM5ZWI4M2ZlN2Q5ZWJlM2FmNWY5MTMwMDExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hXXbae55bqEf3bs4ZfFv5hOvo8BY0C8FsjAd5ygRjCs" width="250" height="450"/> <br>
+## 🔍상세 화면 <br>
+- #### 손님 계정으로 이용 시
+<img src="https://private-user-images.githubusercontent.com/127120404/395744271-81f79adf-8869-40fd-9a28-a41b72c9a439.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MjcxLTgxZjc5YWRmLTg4NjktNDBmZC05YTI4LWE0MWI3MmM5YTQzOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NzQ3NTQ2NjA5NDY5YTcwNjJlNWJmNTA0YjY0MDM1ODEyNmI4MzlkNWNlZjczNDQyMzJjMmI5YTg3MGJkMDljJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YzILvgb3riiiNjoWx7V0pud4HV-tNGi2yJCsUYjALvM" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744300-5ead107b-f3cb-4739-89bf-6395d61ed198.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzAwLTVlYWQxMDdiLWYzY2ItNDczOS04OWJmLTYzOTVkNjFlZDE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iY2RkMTI4OGMxNjdmZGNjYWI2ZjQ5ZjIwYWEwMWE5NjE3MTJiNDBiNDI3MDk0OWE5YzliMTljM2EzNzJmNTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3fivw-ujRX7-fflYU0h4RD708DSwPwwFqGha9eRgDQ4" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744309-1c061fb5-ab8e-4ab0-8e2d-88678b7e2587.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzA5LTFjMDYxZmI1LWFiOGUtNGFiMC04ZTJkLTg4Njc4YjdlMjU4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zM2NhYTc0OGQ4M2VmMzNjMTVmNjJlMzNjYTY5ZmQxZDk5NGEyOTM5ZWI4M2ZlN2Q5ZWJlM2FmNWY5MTMwMDExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hXXbae55bqEf3bs4ZfFv5hOvo8BY0C8FsjAd5ygRjCs" width="230" height="450"/> 
+<img src="https://github.com/user-attachments/assets/5095abd7-be24-489b-94e5-d1a217c8ca75f55b-4a9c-8a65-260ea3438885" width="230" height="450"/>
+<br>
 
-#### 사장님 계정으로 이용 시 <br>
+- #### 사장님 계정으로 이용 시 <br>
 <img src="https://github.com/user-attachments/assets/ab1c775f-08fe-4e55-abd3-2a754ea3d5b1" width="230" height="430"/>
 <img src="https://github.com/user-attachments/assets/dd9557ce-7de1-4fb4-acb9-50228d71bdf9" width="220" height="430"/>
 <img src="https://github.com/user-attachments/assets/8c0358ad-0a00-4f7c-a5fd-eab086c486bb" width="220" height="430"/>
@@ -49,9 +54,34 @@
 <br>
 ### 🔗 [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
 <br>
+<br>
 
-## ⚙️ 시스템 구조
+## ✨ 기대 효과
+![image05](https://github.com/user-attachments/assets/0a0b40eb-298f-4dcd-b3ca-a01b88369d1b)
+본 프로젝트의 기대효과는 다음과 같다.
+
+- 지역 경제 활성화: 소상공인들의 재고 관리 부담을 줄이고 매출 증가에 기여할 수 있으며, 이를 통해 지역 경제가 더욱 활발해지고, 동네 상권이 활성화되는 효과를 기대할 수 있다.<br> 
+- 음식물 폐기물 감소: 유통기한이 임박했으나 여전히 섭취 가능한 음식을 소비자에게 전달함으로써, 음식물 폐기물 양을 줄이는 데에 기여한다. 이는 음식물 폐기물 처리 비용 절감과 쓰레기 매립지나 소각으로 인한 환경 오염을 줄이는 데도 긍정적인 영향을 미칠 것으로 예상된다.<br>
+- 지역 사회 연대 강화: 지역 상점과 소비자 간의 연결고리를 강화해 지역 사회의 유대감을 높이고, 이를 통해 지역 공동체의 상생 문화를 확산시킬 수 있다.<br>
+- 소비자 혜택 제공: 저렴한 가격에 음식을 제공함으로써, 소비자들의 경제적 부담을 줄여준다. 특히, 가계의 식비 절감 효과를 통해 경제적으로 어려운 소비자들에게도 실질적인 혜택을 제공한다.<br>
+- 사회적 인식 제고: 식품 로스 문제에 대한 인식을 높여, 더 많은 사람들이 지속 가능한 소비 패턴을 추구할 수 있도록 사회적 변화를 유도할 수 있다.
+
+본 서비스는 지역 경제, 환경, 사회적 가치에 모두 긍정적인 영향을 미치며, 지속 가능한 발전을 촉진하는 다방면의 효과를 기대할 수 있다.
+
+<br>
+<br>
+
+## ⚙️ 시스템 구조 및 설계
+  - #### 시스템 구조
+![image](https://github.com/user-attachments/assets/556d8201-27ed-430e-9df4-09cfec3dabbd)
+<br>
+  - #### 인포메이션 아키텍쳐
 ![image01](https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04)
+<br>
+  - #### 데이터베이스 ERD 설계
+![image](https://github.com/user-attachments/assets/ad0c5a51-4274-4591-b134-97b0c77daaad)
+<br>
+
 
 <br>
 
@@ -68,19 +98,6 @@
 
 <br>
 
-## ✨ 기대 효과
-![image05](https://github.com/user-attachments/assets/0a0b40eb-298f-4dcd-b3ca-a01b88369d1b)
-본 프로젝트의 기대효과는 다음과 같다.
-
-- 지역 경제 활성화: 소상공인들의 재고 관리 부담을 줄이고 매출 증가에 기여할 수 있으며, 이를 통해 지역 경제가 더욱 활발해지고, 동네 상권이 활성화되는 효과를 기대할 수 있다.<br> 
-- 음식물 폐기물 감소: 유통기한이 임박했으나 여전히 섭취 가능한 음식을 소비자에게 전달함으로써, 음식물 폐기물 양을 줄이는 데에 기여한다. 이는 음식물 폐기물 처리 비용 절감과 쓰레기 매립지나 소각으로 인한 환경 오염을 줄이는 데도 긍정적인 영향을 미칠 것으로 예상된다.<br>
-- 지역 사회 연대 강화: 지역 상점과 소비자 간의 연결고리를 강화해 지역 사회의 유대감을 높이고, 이를 통해 지역 공동체의 상생 문화를 확산시킬 수 있다.<br>
-- 소비자 혜택 제공: 저렴한 가격에 음식을 제공함으로써, 소비자들의 경제적 부담을 줄여준다. 특히, 가계의 식비 절감 효과를 통해 경제적으로 어려운 소비자들에게도 실질적인 혜택을 제공한다.<br>
-- 사회적 인식 제고: 식품 로스 문제에 대한 인식을 높여, 더 많은 사람들이 지속 가능한 소비 패턴을 추구할 수 있도록 사회적 변화를 유도할 수 있다.
-
-본 서비스는 지역 경제, 환경, 사회적 가치에 모두 긍정적인 영향을 미치며, 지속 가능한 발전을 촉진하는 다방면의 효과를 기대할 수 있다.
-
-<br>
 
 ## 📅 프로젝트 진행 과정
 ![image03](https://github.com/user-attachments/assets/5904c923-c606-4cbe-a962-222ab112a2f7)
