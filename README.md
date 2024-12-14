@@ -82,9 +82,9 @@
 <br>
 
 ## ⚙️ 시스템 구조 및 설계
-  - #### 시스템 구조
+  - #### 시스템 아키텍처
 ![image05](https://github.com/user-attachments/assets/9b52c95c-5cb1-445c-a644-793d1d6076d6) <br>
-  - #### 인포메이션 아키텍쳐
+  - #### 인포메이션 아키텍
 ![image01](https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04) <br>
   - #### 시퀀스 다이어그램
 ![image06](https://github.com/user-attachments/assets/e2187639-3feb-4792-a596-6de0a2c5ff3f) <br>
