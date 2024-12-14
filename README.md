@@ -42,29 +42,14 @@
 <br>
 <br>
 
-## 🔍상세 화면 <br>
-- #### 손님 계정으로 이용 시
-<img src="https://private-user-images.githubusercontent.com/127120404/395744271-81f79adf-8869-40fd-9a28-a41b72c9a439.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MjcxLTgxZjc5YWRmLTg4NjktNDBmZC05YTI4LWE0MWI3MmM5YTQzOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NzQ3NTQ2NjA5NDY5YTcwNjJlNWJmNTA0YjY0MDM1ODEyNmI4MzlkNWNlZjczNDQyMzJjMmI5YTg3MGJkMDljJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YzILvgb3riiiNjoWx7V0pud4HV-tNGi2yJCsUYjALvM" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744300-5ead107b-f3cb-4739-89bf-6395d61ed198.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzAwLTVlYWQxMDdiLWYzY2ItNDczOS04OWJmLTYzOTVkNjFlZDE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iY2RkMTI4OGMxNjdmZGNjYWI2ZjQ5ZjIwYWEwMWE5NjE3MTJiNDBiNDI3MDk0OWE5YzliMTljM2EzNzJmNTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3fivw-ujRX7-fflYU0h4RD708DSwPwwFqGha9eRgDQ4" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744309-1c061fb5-ab8e-4ab0-8e2d-88678b7e2587.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzA5LTFjMDYxZmI1LWFiOGUtNGFiMC04ZTJkLTg4Njc4YjdlMjU4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zM2NhYTc0OGQ4M2VmMzNjMTVmNjJlMzNjYTY5ZmQxZDk5NGEyOTM5ZWI4M2ZlN2Q5ZWJlM2FmNWY5MTMwMDExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hXXbae55bqEf3bs4ZfFv5hOvo8BY0C8FsjAd5ygRjCs" width="230" height="450"/> <br>
-입점된 가게들의 판매 게시물을 조회, 찜, 예약할 수 있으며 마이페이지에서 본인의 찜과 예약 내역을 확인할 수 있다.
+## 🔍상세 화면
+![image02](https://github.com/user-attachments/assets/9373016f-b8bd-467c-8141-17d98202121d)
+![image01](https://github.com/user-attachments/assets/7f6e70c8-2049-425b-a0c0-3e0750c27315)
+![image03](https://github.com/user-attachments/assets/7da1cc68-b105-4071-84c0-8f08c7327d95)
+![image04](https://github.com/user-attachments/assets/b64fb416-faec-4d75-acec-9dde0a57910c)
 
 <br>
-
-- #### 사장님 계정으로 이용 시 <br>
-<img src="https://github.com/user-attachments/assets/ab1c775f-08fe-4e55-abd3-2a754ea3d5b1" width="230" height="430"/>
-<img src="https://github.com/user-attachments/assets/8c0358ad-0a00-4f7c-a5fd-eab086c486bb" width="220" height="430"/>
-<img src="https://github.com/user-attachments/assets/c590fc82-f55b-4a9c-8a65-260ea3438885" width="220" height="430"/><br>
-식품 판매 게시물을 업로드할 수 있으며, 마이페이지에서 어떤 유저가 어떤 판매 게시물을 찜, 예약했는지 확인할 수 있다.
-
 <br>
-
-- #### 지도 탭 <br>
-<img src="https://github.com/user-attachments/assets/ff3884dc-b018-4ad2-9ae5-e209106c270c" width="230" height="450"/>
-<img src="https://github.com/user-attachments/assets/2c8c3c60-2929-43c0-95d0-883043295fd4" width="230" height="450"/>
-<img src="https://github.com/user-attachments/assets/14e5daef-68df-4068-83f0-9b03a0f4ba36" width="230" height="450"/><br>
-유저의 현재위치와 입점된 가게들의 위치 서비스를 제공한다. 지도의 가게 아이콘을 누르면 해당 가게가 현재 판매중인 게시물들을 홈탭과 동일하게 확인할 수 있다. 
-
-<br><br>
-
 
 ## ✨ 기대 효과
 ![image05](https://github.com/user-attachments/assets/0a0b40eb-298f-4dcd-b3ca-a01b88369d1b)
@@ -88,9 +73,9 @@
 ![image01](https://github.com/user-attachments/assets/bbb3c19d-1435-45be-9d47-d50cc472bd04) <br>
   - #### 시퀀스 다이어그램
 ![image06](https://github.com/user-attachments/assets/e2187639-3feb-4792-a596-6de0a2c5ff3f) <br>
-<br>
-<br>
 
+<br>
+<br>
 
 ## 🛠 기술 스택
 
@@ -104,12 +89,13 @@
 | **협업 도구**     | <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=flat-square&logo=google-cloud&logoColor=white">
 
 <br>
-
+<br>
 
 ## 📅 프로젝트 진행 과정
 ![image03](https://github.com/user-attachments/assets/5904c923-c606-4cbe-a962-222ab112a2f7)
 ![image04](https://github.com/user-attachments/assets/49d9d5cb-dcc4-49a0-bb1b-b756a091c5d1)
 
+<br>
 <br>
 
 ## 📚 참고 자료
