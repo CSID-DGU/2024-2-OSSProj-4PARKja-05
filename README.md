@@ -29,20 +29,6 @@
 <br>
 <br>
 
-## 🔍상세 화면 <br>
-- #### 손님 계정으로 이용 시
-<img src="https://private-user-images.githubusercontent.com/127120404/395744271-81f79adf-8869-40fd-9a28-a41b72c9a439.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MjcxLTgxZjc5YWRmLTg4NjktNDBmZC05YTI4LWE0MWI3MmM5YTQzOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NzQ3NTQ2NjA5NDY5YTcwNjJlNWJmNTA0YjY0MDM1ODEyNmI4MzlkNWNlZjczNDQyMzJjMmI5YTg3MGJkMDljJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YzILvgb3riiiNjoWx7V0pud4HV-tNGi2yJCsUYjALvM" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744300-5ead107b-f3cb-4739-89bf-6395d61ed198.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzAwLTVlYWQxMDdiLWYzY2ItNDczOS04OWJmLTYzOTVkNjFlZDE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iY2RkMTI4OGMxNjdmZGNjYWI2ZjQ5ZjIwYWEwMWE5NjE3MTJiNDBiNDI3MDk0OWE5YzliMTljM2EzNzJmNTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3fivw-ujRX7-fflYU0h4RD708DSwPwwFqGha9eRgDQ4" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744309-1c061fb5-ab8e-4ab0-8e2d-88678b7e2587.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzA5LTFjMDYxZmI1LWFiOGUtNGFiMC04ZTJkLTg4Njc4YjdlMjU4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zM2NhYTc0OGQ4M2VmMzNjMTVmNjJlMzNjYTY5ZmQxZDk5NGEyOTM5ZWI4M2ZlN2Q5ZWJlM2FmNWY5MTMwMDExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hXXbae55bqEf3bs4ZfFv5hOvo8BY0C8FsjAd5ygRjCs" width="230" height="450"/> 
-<img src="https://github.com/user-attachments/assets/5095abd7-be24-489b-94e5-d1a217c8ca75f55b-4a9c-8a65-260ea3438885" width="230" height="450"/>
-<br>
-
-- #### 사장님 계정으로 이용 시 <br>
-<img src="https://github.com/user-attachments/assets/ab1c775f-08fe-4e55-abd3-2a754ea3d5b1" width="230" height="430"/>
-<img src="https://github.com/user-attachments/assets/dd9557ce-7de1-4fb4-acb9-50228d71bdf9" width="220" height="430"/>
-<img src="https://github.com/user-attachments/assets/8c0358ad-0a00-4f7c-a5fd-eab086c486bb" width="220" height="430"/>
-<img src="https://github.com/user-attachments/assets/c590fc82-f55b-4a9c-8a65-260ea3438885" width="220" height="430"/>
-
-<br><br>
-
 ## 🌟 제공 서비스
 본 서비스는 지역 소상공인과 소비자를 연결하여 유통기한 임박 상품을 효율적으로 판매할 수 있도록 돕는 플랫폼이다. 이를 통해 음식물 폐기물을 줄이고, 지역 경제 활성화 및 환경 보호에 기여하는 것을 목표로 한다. 서비스는 손님과 소상공인의 요구를 모두 충족시키는 사용자 친화적이고 효율적인 예약 및 게시물 관리 시스템을 제공한다.
 
@@ -55,6 +41,30 @@
 ### 🔗 [소소하게 시연 영상](https://www.youtube.com/watch?v=vGHVYTkDSeA)
 <br>
 <br>
+
+## 🔍상세 화면 <br>
+- #### 손님 계정으로 이용 시
+<img src="https://private-user-images.githubusercontent.com/127120404/395744271-81f79adf-8869-40fd-9a28-a41b72c9a439.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MjcxLTgxZjc5YWRmLTg4NjktNDBmZC05YTI4LWE0MWI3MmM5YTQzOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NzQ3NTQ2NjA5NDY5YTcwNjJlNWJmNTA0YjY0MDM1ODEyNmI4MzlkNWNlZjczNDQyMzJjMmI5YTg3MGJkMDljJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YzILvgb3riiiNjoWx7V0pud4HV-tNGi2yJCsUYjALvM" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744300-5ead107b-f3cb-4739-89bf-6395d61ed198.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzAwLTVlYWQxMDdiLWYzY2ItNDczOS04OWJmLTYzOTVkNjFlZDE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iY2RkMTI4OGMxNjdmZGNjYWI2ZjQ5ZjIwYWEwMWE5NjE3MTJiNDBiNDI3MDk0OWE5YzliMTljM2EzNzJmNTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3fivw-ujRX7-fflYU0h4RD708DSwPwwFqGha9eRgDQ4" width="230" height="450"/>  <img src="https://private-user-images.githubusercontent.com/127120404/395744309-1c061fb5-ab8e-4ab0-8e2d-88678b7e2587.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzQxNTI1MzcsIm5iZiI6MTczNDE1MjIzNywicGF0aCI6Ii8xMjcxMjA0MDQvMzk1NzQ0MzA5LTFjMDYxZmI1LWFiOGUtNGFiMC04ZTJkLTg4Njc4YjdlMjU4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxNFQwNDU3MTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zM2NhYTc0OGQ4M2VmMzNjMTVmNjJlMzNjYTY5ZmQxZDk5NGEyOTM5ZWI4M2ZlN2Q5ZWJlM2FmNWY5MTMwMDExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hXXbae55bqEf3bs4ZfFv5hOvo8BY0C8FsjAd5ygRjCs" width="230" height="450"/> <br>
+입점된 가게들의 판매 게시물을 조회, 찜, 예약할 수 있으며 마이페이지에서 본인의 찜과 예약 내역을 확인할 수 있다.
+
+<br>
+
+- #### 사장님 계정으로 이용 시 <br>
+<img src="https://github.com/user-attachments/assets/ab1c775f-08fe-4e55-abd3-2a754ea3d5b1" width="230" height="430"/>
+<img src="https://github.com/user-attachments/assets/8c0358ad-0a00-4f7c-a5fd-eab086c486bb" width="220" height="430"/>
+<img src="https://github.com/user-attachments/assets/c590fc82-f55b-4a9c-8a65-260ea3438885" width="220" height="430"/><br>
+식품 판매 게시물을 업로드할 수 있으며, 마이페이지에서 어떤 유저가 어떤 판매 게시물을 찜, 예약했는지 확인할 수 있다.
+
+<br>
+
+- #### 지도 탭 <br>
+<img src="https://github.com/user-attachments/assets/ff3884dc-b018-4ad2-9ae5-e209106c270c" width="230" height="450"/>
+<img src="https://github.com/user-attachments/assets/2c8c3c60-2929-43c0-95d0-883043295fd4" width="230" height="450"/>
+<img src="https://github.com/user-attachments/assets/14e5daef-68df-4068-83f0-9b03a0f4ba36" width="230" height="450"/><br>
+유저의 현재위치와 입점된 가게들의 위치 서비스를 제공한다. 지도의 가게 아이콘을 누르면 해당 가게가 현재 판매중인 게시물들을 홈탭과 동일하게 확인할 수 있다. 
+
+<br><br>
+
 
 ## ✨ 기대 효과
 ![image05](https://github.com/user-attachments/assets/0a0b40eb-298f-4dcd-b3ca-a01b88369d1b)
