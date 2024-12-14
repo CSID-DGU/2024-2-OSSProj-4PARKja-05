@@ -98,4 +98,4 @@
 <br>
 
 ## 📚 참고 자료
-본 프로젝트는 오픈소스 프로젝트 [당근마켓 클론코딩딩](https://github.com/carrotclone/carrotmarket-fe)를 활용하였습니다. 해당 프로젝트를 개발한 기여자분들께 감사의 말씀을 전합니다.
+본 프로젝트는 오픈소스 프로젝트 [당근마켓 클론코딩](https://github.com/carrotclone/carrotmarket-fe)를 활용하였습니다. 해당 프로젝트를 개발한 기여자분들께 감사의 말씀을 전합니다.
